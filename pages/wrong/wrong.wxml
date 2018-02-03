@@ -1,0 +1,69 @@
+<!-- 题库主页 -->
+<view class="topic">
+	<view class="top-bar"></view>
+	<image class="bg" src="../../assets/bg0.png"></image>
+	<view class="container">
+		<image class="banner-title" src="../../assets/topic-title-wrong.png">
+			<image class="shadow" src="../../assets/shadow.png"></image>
+		</image>
+
+		<view class="banner-list">
+			<view class="banner-item">
+				<image class="banner-img" src="../../assets/banner-word.png">
+					<view class="expand icon"></view>
+				</image>
+				<view class="desc-box">
+					<view class="type-list">
+						<view class="type-item"><view class="selected"></view>单项选择题</view>
+						<view class="type-item">单选题</view>
+						<view class="type-item">单选题</view>
+					</view>
+					<view class="start-btn">开始答题</view>
+				</view>
+			</view>
+
+			<view class="banner-item">
+				<image class="banner-img" src="../../assets/banner-ppt.png">
+					<view class="expand icon"></view>
+				</image>
+				<view class="desc-box dis-none">
+					<view class="type-list">
+						<view class="type-item"><view class="selected"></view>单项选择题</view>
+						<view class="type-item">单选题</view>
+						<view class="type-item">单选题</view>
+					</view>
+					<view class="start-btn">开始答题</view>
+				</view>
+			</view>
+
+			<view class="banner-item">
+				<image class="banner-img" src="../../assets/banner-excel.png">
+					<view class="expand icon"></view>
+				</image>
+				<view class="desc-box dis-none">
+					<view class="type-list">
+						<view class="type-item"><view class="selected"></view>单项选择题</view>
+						<view class="type-item">单选题</view>
+						<view class="type-item">单选题</view>
+					</view>
+					<view class="start-btn">开始答题</view>
+				</view>
+			</view>
+
+			<view class="banner-item">
+				<image class="banner-img" src="../../assets/banner-cad.png">
+					<view class="expand icon"></view>
+				</image>
+				<view class="desc-box dis-none">
+					<view class="type-list">
+						<view class="type-item"><view class="selected"></view>单项选择题</view>
+						<view class="type-item">单选题</view>
+						<view class="type-item">单选题</view>
+					</view>
+					<view class="start-btn">开始答题</view>
+				</view>
+			</view>
+			
+		</view>
+	</view>
+</view>

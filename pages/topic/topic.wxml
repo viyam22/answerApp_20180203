@@ -1,0 +1,20 @@
+<!-- 题库主页 -->
+<view class="topic">
+	<view class="top-bar"></view>
+	<image class="bg" src="../../assets/bg0.png"></image>
+	<view class="container">
+		<image class="banner-title" src="../../assets/topic-title.png"></image>
+		<image class="banner-item" src="../../assets/banner-word.png">
+			<image class="icon-wps" src="../../assets/i-wps.png"></image>
+		</image>
+		<image class="banner-item" src="../../assets/banner-ppt.png">
+			<image class="icon-wps" src="../../assets/i-wps.png"></image>
+		</image>
+		<image class="banner-item" src="../../assets/banner-excel.png">
+			<image class="icon-wps" src="../../assets/i-wps.png"></image>
+		</image>
+		<image class="banner-item" src="../../assets/banner-cad.png">
+			<image class="icon-cad" src="../../assets/i-atuo-cad.png"></image>
+		</image>
+	</view>
+</view>

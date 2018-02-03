@@ -1,13 +1,21 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<!-- 首页 -->
+<view class="home">
+  <image class="bg" src="../../assets/bg0.png"></image>
+  <view class="hd">
+    <view class="hd-title"></view>
+    <view class="hd-box">
+      <view class="hd-avatar"></view>
+      <view class="hd-logo"></view>
+      <view class="hd-info">
+        <view class="name">微信名字最多是可以起十六个字符</view>
+        <view class="integral"><image src="../../assets/i-integral.png"></image>930</view>
+      </view>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="bd">
+    <image class="banner-ex" src="../../assets/b-exercise.png"></image>
+    <image class="banner-desc" src="../../assets/b-des.png"></image>
+    <image class="banner-gift" src="../../assets/b-gift.png"></image>
+    <image class="banner-wrong" src="../../assets/b-wrong.png"></image>
   </view>
 </view>
