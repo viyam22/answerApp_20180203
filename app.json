@@ -1,9 +1,12 @@
 {
   "pages":[
+    "pages/gift/gift",
+    "pages/question/question",
     "pages/wrong/wrong",
+    "pages/topic-list/topic-list",
     "pages/topic/topic",
-    "pages/desc/desc",
     "pages/index/index",
+    "pages/desc/desc",
     "pages/logs/logs"
   ],
   "window":{

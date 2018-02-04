@@ -1,0 +1,9 @@
+<view>
+	<image class="bg" src="../../assets/bg1.png"></image>
+	<view class="container">
+		<view class="gift-name">小米闹钟音响</view>
+		<image class="gift-img"></image>
+		<view class= "gift-info"></view>
+		<view class="btn exchange-btn">兑换</view>
+	</view>
+</view>

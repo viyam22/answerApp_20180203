@@ -1,0 +1,7 @@
+.container {
+	width: 606rpx;
+	height: 906rpx;
+	margin: 106rpx auto 0;
+	background-color: #fff;
+	border-radius: 16rpx;
+}
