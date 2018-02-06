@@ -16,6 +16,7 @@ Page({
     })
   },
   onLoad: function () {
+    console.log('app:', app);
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -50,5 +51,33 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+
+  // 跳转页面到题库
+  toTopicPage: function() {
+    wx.navigateTo({
+      url: '../topic/topic'
+    })
+  },
+
+  // 跳转页面到活动说明页
+  toDescPage: function() {
+    wx.navigateTo({
+      url: '../desc/desc'
+    })
+  },
+
+  // 跳转页面到礼品中心页面
+  toGiftPage: function() {
+    wx.navigateTo({
+      url: '../gift/gift'
+    })
+  },
+
+  // 跳转页面到我的错题库
+  toWrongPage: function() {
+    wx.navigateTo({
+      url: '../wrong/wrong'
+    })
+  },
 })
