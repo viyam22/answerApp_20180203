@@ -1,11 +1,12 @@
 {
   "pages":[
-    "pages/gift/gift",
     "pages/question/question",
-    "pages/wrong/wrong",
+    "pages/gift/gift",
+    "pages/myData/myData",
+    "pages/index/index",
     "pages/topic-list/topic-list",
     "pages/topic/topic",
-    "pages/index/index",
+    "pages/wrong/wrong",
     "pages/desc/desc",
     "pages/logs/logs"
   ],

@@ -14,16 +14,6 @@ Page({
    * areas当前被选中的区
    */
   data: {
-  	// 礼品
-  	needIntegral: 567,
-  	hasIntegral:1009,
-  	exchangeBtnClass: 'ban-btn',
-
-  	// 填写信息
-  	isShowPopup: false,
-  	areaInfoColor: 'rgba(255, 255, 255, 0.5)',  // 省市区选择框文字颜色
-  	areaName: '省 市 区',    
-
     menuType: 0,
     begin: null,
     status: 1,
@@ -39,15 +29,35 @@ Page({
     province: '',
     city: '',
     area: '',
+    areaName: '地区信息',
+    areaInfo: {},
+    areaInfoColor: '#c7c6cc',
+    inputName: '',
+    inputPhone: '',
+    inputAddress: '',
+    inputAge: '',
+    inputWork: '',
+    inputVip: '',
+    inputSex: '',
+    inputP: '',
+    inputA: '',
+    inputC: '',
+    accessTokenData: {},
+    addressTip: 'address',
+    buttonTip: '',
+    buttonFun: '',
+    selectFun: '',
+    sexIndex: -1,
+    sexArray: ['男', '女'],
+    isNotWrite: false,
   },
  /**
    * 生命周期函数--监听页面加载
    */
   onShow: function (options) {
-    var _this = this;
-    // _this.showExchangeBtn(); 
+    var that = this;
     // app.getUserInfo(function() {
-    //   _this.initData();
+    //   that.initData();
     // })
     // 初始化动画变量
     var animation = wx.createAnimation({
@@ -55,42 +65,15 @@ Page({
       transformOrigin: "50% 50%",
       timingFunction: 'ease',
     })
-    _this.animation = animation;
+    that.animation = animation;
     // 默认联动显示北京
     var id = address.provinces[0].id
-    _this.setData({
+    that.setData({
       provinces: address.provinces,
       citys: address.citys[id],
       areas: address.areas[address.citys[id][0].id],
     })
   },
-
-
-	/**
-	* 页面代码
-	*/
-
-	// 是否禁止兑换按钮
-	showExchangeBtn: function() {  
-		var _this = this;
-		var exchangeBtnClass = _this.data.hasIntegral >= _this.data.needIntegral ? 
-													'btn' : 'ban-btn';
-		_this.setData({ exchangeBtnClass: exchangeBtnClass });
-	},
-
-	showPopup: function() {
-		console.log('按下了兑换按钮');
-		var _this = this;
-		_this.setData({ isShowPopup: true })
-	},
-
-	test: function() {
-		console.log('按下了兑换按钮----');
-	},
-
-	/**
-	* 城市三级联动代码
-	*/
 
   bindPickerChange: function(e) {
     this.setData({
@@ -117,7 +100,7 @@ Page({
   },
   // 执行动画
   startAnimation: function (isShow, offset) {
-    var _this = this
+    var that = this
     var offsetTem
     if (offset == 0) {
       offsetTem = offset
@@ -158,22 +141,22 @@ Page({
   
   // 点击所在地区弹出选择框
   selectDistrict: function (e) {
-    var _this = this
-    if (_this.data.addressMenuIsShow) {
+    var that = this
+    if (that.data.addressMenuIsShow) {
       return
     }
-    _this.startAddressAnimation(true)
+    that.startAddressAnimation(true)
   },
   // 执行动画
   startAddressAnimation: function (isShow) {
-    var _this = this
+    var that = this
     if (isShow) {
-      _this.animation.translateY(0 + 'vh').step()
+      that.animation.translateY(0 + 'vh').step()
     } else {
-      _this.animation.translateY(40 + 'vh').step()
+      that.animation.translateY(40 + 'vh').step()
     }
-    _this.setData({
-      animationAddressMenu: _this.animation.export(),
+    that.setData({
+      animationAddressMenu: that.animation.export(),
       addressMenuIsShow: isShow,
     })
   },
@@ -183,23 +166,23 @@ Page({
   },
   // 点击地区选择确定按钮
   citySure: function (e) {
-    var _this = this
-    var city = _this.data.city
-    var value = _this.data.value
-    _this.startAddressAnimation(false)
+    var that = this
+    var city = that.data.city
+    var value = that.data.value
+    that.startAddressAnimation(false)
     // 将选择的城市信息显示到输入框
     var areaInfo = {
-      p: _this.data.provinces[value[0]].name,
-      c: _this.data.citys[value[1]].name,
-      a: _this.data.areas[value[2]].name
+      p: that.data.provinces[value[0]].name,
+      c: that.data.citys[value[1]].name,
+      a: that.data.areas[value[2]].name
     }
-    _this.setData({
+    that.setData({
       areaInfo: areaInfo,
-      inputP: _this.data.provinces[value[0]].name,
-      inputA: _this.data.areas[value[2]].name,
-      inputC: _this.data.citys[value[1]].name,
-      areaName: _this.data.provinces[value[0]].name + ' ' + _this.data.citys[value[1]].name + ' ' + _this.data.areas[value[2]].name,
-      areaInfoColor: '#fff'
+      inputP: that.data.provinces[value[0]].name,
+      inputA: that.data.areas[value[2]].name,
+      inputC: that.data.citys[value[1]].name,
+      areaName: that.data.provinces[value[0]].name + ' ' + that.data.citys[value[1]].name + ' ' + that.data.areas[value[2]].name,
+      areaInfoColor: '#333'
     })
   },
   hideCitySelected: function (e) {
@@ -236,76 +219,173 @@ Page({
 
   //复制input中的地址
   copyAddress: function (e) {
-    var _this = this;
-    _this.setData({
+    var that = this;
+    that.setData({
       address: e.detail.value
     })
   },
 
-  // post表单信息
+  showToast: function(title) {
+    wx.showToast({
+      title: title,
+    })
+  },
+
+  showModat: function(content) {
+    var that = this;
+    wx.showModal({
+      title: '错误提示',
+      content: content,
+      cancelText: '取消',
+      confirmText: '确定',
+      success: function(res) {
+        if (res.confirm) {
+          that.setData({
+            isMask: !that.data.isMask,
+          })
+        } else if (res.cancel) {
+          that.setData({
+            isMask: !that.data.isMask,
+          })
+        }
+      }
+    })
+  },
+
   postUserData: function() {
-    var _this = this;
+    var that = this;
    
     wx.request({
-      url: '',
+      url: 'https://wm.hengdikeji.com/api/v1/addres',
       method: 'POST',
       data: {
+        gender: parseInt(that.data.sexIndex) + 1,
+        name: that.data.inputName,
+        jobType: that.data.inputWork,
+        mobile: that.data.inputPhone,
+        address: that.data.address,
+        age: that.data.inputAge,
+        p: that.data.areaInfo.p,
+        c: that.data.areaInfo.c,
+        a: that.data.areaInfo.a,
+        vip: that.data.inputVip
       },
       header: {
         Authorization: app.globalData.accessTokenData.token_type + ' ' + app.globalData.accessTokenData.access_token,
       },
       success: function(res) {
-        
+        if (res.data.code === 0) {
+          that.showModat(res.data.msg);
+        } else {
+          that.showToast('保存成功！')
+          that.setData({
+            buttonTip: '修改信息',
+            buttonFun: 'modifyInfo',
+            selectFun: '',
+            isNotWrite: true,
+          })
+          app.globalData.userData.myAddres = 1;
+          setTimeout(function() {
+            that.toMinePage();
+          }, 2000)
+        }
       }
     })
   },
 
-  // 获取表单信息
+  toMinePage: function() {
+    wx.navigateBack({
+      url: '../mine/mine'
+    })
+  },
+
   getInputVal: function(e) {
-    var _this = this;
+    var that = this;
     var name = '', age = '', work = '', adress = '', phone = '';
     if (e.target.dataset.type === 'name') {
-      _this.setData({
+      that.setData({
         inputName: e.detail.value,
       })
     };
     if (e.target.dataset.type === 'age') {
-      _this.setData({
+      that.setData({
         inputAge: e.detail.value,
       })
     };
     if (e.target.dataset.type === 'work') {
-      _this.setData({
+      that.setData({
         inputWork: e.detail.value,
       })
     };
     if (e.target.dataset.type === 'phone') {
-      _this.setData({
+      that.setData({
         inputPhone: e.detail.value,
       })
     };
     if (e.target.dataset.type === 'adress') {
-      _this.setData({
+      that.setData({
         address: e.detail.value,
       })
     };
     if (e.target.dataset.type === 'vip') {
-      _this.setData({
+      that.setData({
         inputVip: e.detail.value,
       })
     };
   },
 
-  // 初始化信息
+  modifyInfo: function() {
+    var that = this;
+    that.setData({
+      buttonTip: '保存',
+      buttonFun: 'postUserData',
+      isNotWrite: false,
+      selectFun: 'selectDistrict',
+    })
+  },
+
   initData: function() {
-    var _this = this;
+    var that = this;
     wx.request({
-      url: '',
+      url: 'https://wm.hengdikeji.com/api/v1/myAddres',
       header: {
         Authorization: app.globalData.accessTokenData.token_type + ' ' + app.globalData.accessTokenData.access_token,
       },
       success: function({data}) {
-        
+        if (!data.name) {
+          that.setData({
+            sexIndex: data.gender ? data.gender - 1 : app.globalData.userInfo.gender - 1,
+            buttonTip: '保存',
+            buttonFun: 'postUserData',
+            selectFun: 'selectDistrict',
+            isNotWrite: false,
+          })
+          return;
+        }
+        var areaInfo = {
+          p: data.p,
+          c: data.c,
+          a: data.a,
+        }
+        that.setData({
+          inputName: data.name,
+          inputAddress: data.address,
+          inputAge: data.age,
+          inputPhone: data.mobile,
+          inputWork: data.jobType,
+          inputVip:data.vip,
+          areaInfo: areaInfo,
+          areaName: data.p + ' ' + data.c + ' ' + data.a,
+          areaInfoColor: data.p || data.c || data.a ? '#333' : '#c7c6cc',
+          address: data.address,
+          addressTip: data.address ? '' : '地区信息',
+          sexIndex: data.gender ? data.gender - 1 : app.globalData.userInfo.gender - 1,
+          isNotWrite: true,
+          buttonFun: 'modifyInfo',
+          selectFun: '',
+          buttonTip: '修改信息',
+        });
+       
       }
     })
   }

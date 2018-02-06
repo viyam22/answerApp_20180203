@@ -1,7 +1,161 @@
-.container {
-	width: 606rpx;
-	height: 906rpx;
-	margin: 106rpx auto 0;
-	background-color: #fff;
-	border-radius: 16rpx;
+@import "../../templates/selectarea/selectarea.wxss";
+
+
+.gift-border {
+	background-color: #3483e9;
 }
+.gift-img {
+	position: absolute;
+	top: 18rpx;
+	width: 602rpx;
+	height: 906rpx;
+	z-index: -1;
+	border-radius: 32rpx;
+}
+.exchange-btn {
+	position: absolute;
+	top: 788rpx;
+	left: 50%;
+	transform: translateX(-50%);
+  z-index: 999;
+}
+.gift-info {
+	/*margin: 626rpx auto 0;*/
+	font-size: 30rpx;
+	line-height: 50rpx;
+	color: #333;
+	box-sizing: border-box;
+	display: inline-block;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 498rpx;
+}
+.integral-item {
+	position: relative;
+}
+.integral-item text {
+	margin-left: 50rpx;
+}
+.i-integral {
+	width: 44rpx;
+	height: 44rpx;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.box-border {
+	background-color: rgba(63, 140, 244, 0.3);
+}
+.input-box {
+	width: 544rpx;
+	height: 76rpx;
+	line-height: 76rpx;
+	border-radius: 10rpx;
+	background-color: #3f8cf4;
+	color: #fff;
+	font-size: 26rpx;
+	padding: 0 20rpx;
+	box-sizing: border-box;
+}
+.input-text {
+	font-size: 26rpx;
+	color: rgba(255, 255, 255, 0.5);
+}
+.info-container {
+	width: 100%;
+	padding: 23rpx 29rpx 0;
+	box-sizing: border-box;
+}
+.info-container text {
+	margin-left: 20rpx;
+	color: #666;
+	font-size: 26rpx;
+	line-height: 54rpx;
+}
+.select-district {
+	width: 544rpx;
+	height: 76rpx;
+	line-height: 76rpx;
+	border-radius: 10rpx;
+	background-color: #3f8cf4;
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 26rpx;
+	padding: 0 20rpx;
+	box-sizing: border-box;
+  position: relative;
+}
+.i-left {
+  width: 14rpx;
+  height: 24rpx;
+  float: right;
+  margin: 26rpx 0; 
+}
+.textarea-box {
+  width: 544rpx;
+  height: 163rpx;
+  padding: 27rpx 20rpx;
+  box-sizing: border-box;
+  line-height: 36rpx;
+  border-radius: 10rpx;
+  background-color: #3f8cf4;
+  color: #fff;
+  font-size: 26rpx;
+  margin-top: 18rpx;
+}
+.tip {
+  font-size: 22rpx;
+  color: #666;
+  margin-top: 17rpx;
+}
+.ok-btn {
+  margin: 28rpx auto 0;
+}
+
+
+
+.picker-view {
+  width: 100%;
+  display: flex;
+  z-index:99;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  height: 40vh;
+}
+
+.picker-item {
+  line-height: 70rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  text-align: center;
+}
+.red{
+  color: red;
+  display: initial;
+  
+}
+.left{
+  display: block;
+  text-align: right;
+  width: 150rpx
+}
+.myprompt{
+  font-size: 8pt
+}
+
+
+
+
+
+
+
+
+
+
+
+

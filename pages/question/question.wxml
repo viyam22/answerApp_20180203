@@ -6,10 +6,10 @@
 		<view class="title">在Word 2003中，设定打印纸张大小时，应当使用的命令是</view>
 	</view>
 	<view class="question-list">
-		<view class="item item-right">文件"菜单中的"页面设置"命令</view>
-		<view class="item item-default">文件"菜单中的"页面设置"命令</view>
-		<view class="item item-right-more">文件"菜单中的"页面设置"命令</view>
-		<view class="item item-wrong">文件"菜单中的"页面设置"命令</view>
+		<view class="item item-right" data-option="0">文件"菜单中的"页面设置"命令</view>
+		<view class="item item-default" data-option="1">文件"菜单中的"页面设置"命令</view>
+		<view class="item item-right-more" data-option="2">文件"菜单中的"页面设置"命令</view>
+		<view class="item item-wrong" data-option="3">文件"菜单中的"页面设置"命令</view>
 
 		<view class="btn ok-btn">确定</view>
 	</view>

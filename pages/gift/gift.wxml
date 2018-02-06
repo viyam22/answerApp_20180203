@@ -1,9 +1,59 @@
 <view>
-	<image class="bg" src="../../assets/bg1.png"></image>
-	<view class="container">
-		<view class="gift-name">小米闹钟音响</view>
-		<image class="gift-img"></image>
-		<view class= "gift-info"></view>
-		<view class="btn exchange-btn">兑换</view>
-	</view>
+  <image class="bg" src="../../assets/bg1.png"></image>
+  <view class="box-border gift-border">
+    <image class="gift-img" src="../../assets/gift.png"></image>
+    <view class="box-name">小米闹钟音响</view>
+    <view class= "gift-info">
+      <view class="integral-item">需要积分：<image class="i-integral" src="../../assets/i-integral.png"></image><text>{{needIntegral}}</text></view>
+      <view class="integral-item">你的积分：<image class="i-integral" src="../../assets/i-integral.png"></image><text>{{hasIntegral}}</text></view>
+    </view>
+    <view class="{{hasIntegral >= needIntegral ? 'btn' : 'ban-btn'}} exchange-btn" bindtap="test">兑换</view>
+  </view>
+
+  <view class="popup" wx:if="{{isShowPopup}}" style="display: none">
+    <view class="box-border info-border">
+      <view class="box-bg">
+        <view class="box-name">兑奖信息登记</view>
+        <view class="info-container">
+          <text>姓名</text>
+          <input class="input-box" disabled="{{isNotWrite}}" placeholder="请输入收件人姓名" placeholder-class="input-text" value="{{inputName}}" bindblur="getInputVal" data-type="name"></input>
+          <text>手机</text>
+          <input class="input-box" disabled="{{isNotWrite}}" placeholder="请输入收件人手机号码" placeholder-class="input-text" value="{{inputName}}" bindblur="getInputVal" data-type="name"></input>
+          <text>地址</text>
+          <view class="select-district" bindtap="selectDistrict" style="color: {{areaInfoColor}};">{{areaName}}<image class="i-left" src="../../assets/i-left.png"></image></view>
+          <textarea class="textarea-box" disabled="{{isNotWrite}}" placeholder="请输入具体的街道地址" placeholder-class="input-text" value="{{inputName}}" bindblur="getInputVal" data-type="name"></textarea>
+          <view class="tip">注：请如实填写兑奖信息，凭填写信息进行兑奖，谢谢。</view>
+          <view class="ok-btn btn">确定</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<!--城市三级联动-->
+<!--使用动画时不能wx:if="{{city.length>0&&isVisible}}" ，不能hidden=''属性否则无动画效果-->
+<!-- <view class="picker-view" animation="{{animationAddressMenu}}" style="visibility:{{addressMenuIsShow ? 'visible':'hidden'}}"> -->
+  <!-- <view class="picker-view" animation="{{animationAddressMenu}}" style="display:{{addressMenuIsShow ? 'block':'none'}}"> -->
+  <view class="picker-view" animation="{{animationAddressMenu}}" style="display: none">
+  <view style="height:10% ;width:95%;margin-top:10rpx"> 
+    <text catchtap="cityCancel">取消</text>
+    <text style="float: right" catchtap="citySure">确定</text>
+  </view>
+  <!--"可以显示默认的城市，使用后级联选择城市反应很慢就不使用了-->
+  <picker-view style="width: 100%; height: 90%;" bindchange="cityChange" value="{{value}}" wx:key="">
+    <picker-view-column>
+      <view wx:for="{{provinces}}" wx:key="{{item.name}}" class="picker-item">
+        {{item.name}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{citys}}" class="picker-item" wx:key="">
+        {{item.name}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{areas}}" class="picker-item" wx:key="">
+        {{item.name}}</view>
+    </picker-view-column>
+  </picker-view>
 </view>

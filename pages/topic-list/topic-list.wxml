@@ -8,31 +8,42 @@
 		</image>
 
 		<view class="banner-list">
-			<view class="banner-item">
+			<view class="banner-item" wx:for="{{examData}}" wx:key="{{item.examNum}}">
 				<view class="content">
-					<view class="topic-num">试题一</view>
+					<view class="topic-num">{{item.examNum}}</view>
 					<view class="topic-desc">入门测试 | 难度
-						<image class="i-star" src="../../assets/i-star.png"></image>
+						<image class="i-star" src="../../assets/i-star.png" wx:if="{{item.difficulty >= 1}}"></image>
+						<image class="i-star" src="../../assets/i-star.png" wx:if="{{item.difficulty >= 2}}"></image>
+						<image class="i-star" src="../../assets/i-star.png" wx:if="{{item.difficulty >= 3}}"></image>
+						<image class="i-star" src="../../assets/i-star.png" wx:if="{{item.difficulty >= 4}}"></image>
+						<image class="i-star" src="../../assets/i-star.png" wx:if="{{item.difficulty >= 5}}"></image>
 					</view>
-					<view class="recover icon"></view>
+					<view class="{{item.examIconClass}} icon" bindtap="toggleDesc" data-index="{{index}}"></view>
 				</view>
-				<view class="desc-box">
+				<view class="desc-box" wx:if="item.isExpand">
 					<view class="type-list">
-						<view class="type-item"><view class="selected"></view>单项选择题</view>
-						<view class="type-item">单选题</view>
-						<view class="type-item">单选题</view>
+						<view class="type-item" bindtap="selectedExamType" data-examtype="0" data-index="{{index}}">
+							<view class="selected" wx:if="{{item.examType === '0'}}"></view>
+						单项选择题</view>
+						<view class="type-item" bindtap="selectedExamType" data-examtype="1" data-index="{{index}}">
+							<view class="selected" wx:if="{{item.examType === '1'}}"></view>
+							单选题
+						</view>
+						<view class="type-item" bindtap="selectedExamType" data-examtype="2" data-index="{{index}}">
+							<view class="selected" wx:if="{{item.examType === '2'}}"></view>
+						单选题</view>
 					</view>
-					<view class="start-btn btn">开始答题</view>
+					<view class="start-btn btn" bindtap="starExam" data-index="{{index}}" data-examtype="{{item.examType}}">开始答题</view>
 				</view>
 			</view>
 
-			<view class="banner-item">
+			<!-- <view class="banner-item">
 				<view class="content">
 					<view class="topic-num">试题一</view>
 					<view class="topic-desc">入门测试 | 难度
 						<image class="i-star" src="../../assets/i-star.png"></image>
 					</view>
-					<view class="recover icon"></view>
+					<view class="recover icon" bindtap="recover" data-index="1"></view>
 				</view>
 				<view class="desc-box dis-none">
 					<view class="type-list">
@@ -50,7 +61,7 @@
 					<view class="topic-desc">入门测试 | 难度
 						<image class="i-star" src="../../assets/i-star.png"></image>
 					</view>
-					<view class="recover icon"></view>
+					<view class="recover icon" bindtap="recover" data-index="2"></view>
 				</view>
 				<view class="desc-box dis-none">
 					<view class="type-list">
@@ -68,7 +79,7 @@
 					<view class="topic-desc">入门测试 | 难度
 						<image class="i-star" src="../../assets/i-star.png"></image>
 					</view>
-					<view class="recover icon"></view>
+					<view class="recover icon" bindtap="recover" data-index="3"></view>
 				</view>
 				<view class="desc-box dis-none">
 					<view class="type-list">
@@ -78,7 +89,7 @@
 					</view>
 					<view class="start-btn btn">开始答题</view>
 				</view>
-			</view>
+			</view> -->
 			
 		</view>
 	</view>
