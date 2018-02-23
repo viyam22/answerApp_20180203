@@ -2,10 +2,11 @@
 <view class="home">
   <image class="bg" src="../../assets/bg0.png"></image>
   <view class="hd">
-    <view class="hd-title"></view>
+    <image class="hd-bg" src="../../assets/h-top-decoration.png"></image>
+    <image class="hd-title" src="../../assets/h-title.png"></image>
     <view class="hd-box">
       <view class="hd-avatar"></view>
-      <view class="hd-logo"></view>
+      <image class="hd-logo" src="../../assets/h-logo.png"></image>
       <view class="hd-info">
         <view class="name">微信名字最多是可以起十六个字符</view>
         <view class="integral"><image src="../../assets/i-integral.png"></image>930</view>

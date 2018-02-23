@@ -2,15 +2,16 @@
 <view>
 	<image class="bg" src="../../assets/bg1.png"></image>
 	<view class="hd">
-		<view class="label">第六题</view>
-		<view class="title">在Word 2003中，设定打印纸张大小时，应当使用的命令是</view>
+		<text class="label">{{showData.label}}</text>
+		<view class="time">120<text class="time-small">s</text></view>
+		<view class="title">{{showData.title}}</view>
 	</view>
 	<view class="question-list">
-		<view class="item item-right" data-option="0">文件"菜单中的"页面设置"命令</view>
-		<view class="item item-default" data-option="1">文件"菜单中的"页面设置"命令</view>
-		<view class="item item-right-more" data-option="2">文件"菜单中的"页面设置"命令</view>
-		<view class="item item-wrong" data-option="3">文件"菜单中的"页面设置"命令</view>
+		<view class="item {{showData.option[0].itemClass}}" data-option="0" wx:if="{{showData.option.length > 0}}" bindtap="selectAnswer">{{showData.option[0].text}}</view>
+		<view class="item {{showData.option[1].itemClass}}" data-option="1" wx:if="{{showData.option.length > 1}}" bindtap="selectAnswer">{{showData.option[1].text}}</view>
+		<view class="item {{showData.option[2].itemClass}}" data-option="2" wx:if="{{showData.option.length > 2}}" bindtap="selectAnswer">{{showData.option[2].text}}</view>
+		<view class="item {{showData.option[3].itemClass}}" data-option="3" wx:if="{{showData.option.length > 3}}" bindtap="selectAnswer">{{showData.option[3].text}}</view>
 
-		<view class="btn ok-btn">确定</view>
+		<view class="btn ok-btn" wx:if="{{showData.type === 1}}" bindtap="selectMul">确定</view>
 	</view>
 </view>

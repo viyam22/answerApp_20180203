@@ -1,17 +1,18 @@
 .hd {
-	height: 440rpx;
+	height: 470rpx;
 	width: 100%;
 }
 .hd > .label {
 	height: 70rpx;
 	line-height: 70rpx;
-	width: 196rpx;
+	min-width: 196rpx;
+	box-sizing: border-box;
+	padding: 16rpx 50rpx 16rpx 32rpx;
 	border-radius: 0 40rpx 40rpx 0;
 	background-color: #4674de;
 	text-align: center;
 	font-size: 36rpx;
 	color: #fff;
-	font-weight: bold;
 }
 .hd > .title {
 	font-size: 36rpx;
@@ -19,7 +20,22 @@
 	padding: 0 78rpx;
 	text-align: center;
 	line-height: 50rpx;
-	margin-top: 50rpx; 
+}
+.hd > .time {
+	color: #b9e84c;
+	font-weight: 900;
+	font-size: 129rpx;
+	text-align: center;
+	width: 100%;
+	height: 200rpx;
+	line-height: 200rpx;
+}
+.hd > .time > .time-small {
+	font-size: 80rpx!important;
+	font-weight: bold!important;
+}
+.hd > .time-danger {
+	color: red!important;
 }
 .question-list {
 	width: 100%;
@@ -38,6 +54,10 @@
 .item-default {
 	color: #666;
 	background-color: #fff;
+}
+.item-selected {
+	color: #fff;
+	background-color: #999;
 }
 .item-right, .item-right-more {
 	color: #fff;

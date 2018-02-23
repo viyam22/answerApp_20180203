@@ -12,13 +12,58 @@
 .container {
 	/*padding: 35rpx 49rpx;*/
 }
-.banner-title {
+.hd {
 	width: 680rpx;
 	height: 274rpx;
-	z-index: 0;
 	margin: 0 auto;
-	display: block;
 	position: relative;
+}
+.banner-title-bg {
+	width: 680rpx;
+	height: 274rpx;
+	position: absolute;
+}
+.i-integral {
+	width: 44rpx;
+	height: 44rpx;
+	position: absolute;
+	top: 12rpx;
+	left: 50rpx;
+}
+.txt-integral {
+	color: #fff;
+	font-size: 36rpx;
+	position: absolute;
+	top: 12rpx;
+	left: 105rpx;
+}
+.banner-title {
+	color: #fff;
+	font-size: 48rpx;
+	position: absolute;
+	top: 76rpx;
+	width: 100%;
+	text-align: center;
+}
+.banner-title title {
+	font-size: 56rpx;
+	font-weight: bold;
+}
+.banner-txt {
+	color: #fff;
+	font-size: 24rpx;
+	line-height: 38rpx;
+	top: 140rpx;
+	width: 100%;
+	position: absolute;
+	text-align: center;
+}
+.shadow {
+	width: 663rpx;
+	height: 20rpx;
+	position: absolute;
+	top: 242rpx;
+	left: 10rpx;
 }
 .banner-img {
 	width: 652rpx;
@@ -55,13 +100,6 @@
 	width: 26rpx;
 	height: 26rpx;
 	margin-top: 1rpx;
-}
-.shadow {
-	width: 663rpx;
-	height: 20rpx;
-	position: absolute;
-	top: 242rpx;
-	left: 10rpx;
 }
 .banner-list {
 	transform: translateY(-40rpx);

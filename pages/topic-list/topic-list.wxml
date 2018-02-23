@@ -3,24 +3,31 @@
 	<view class="top-bar"></view>
 	<image class="bg" src="../../assets/bg0.png"></image>
 	<view class="container">
-		<image class="banner-title" src="../../assets/topic-title-list.png">
+		<view class="hd">
+			<image class="banner-title-bg" src="../../assets/topic-title-list.png"></image>
+			<image class="i-integral" src="../../assets/i-integral.png"></image>
+			<text class="txt-integral">930</text>
+			<view class="banner-title"><text>WPS</text>文字题库</view>
+			<text class="banner-txt">每天仅限作答1次WPS文字题库\n每个题库包含单选题，多选题，判断题</text>
 			<image class="shadow" src="../../assets/shadow.png"></image>
-		</image>
+		</view>
 
 		<view class="banner-list">
 			<view class="banner-item" wx:for="{{examData}}" wx:key="{{item.examNum}}">
-				<view class="content">
-					<view class="topic-num">{{item.examNum}}</view>
-					<view class="topic-desc">入门测试 | 难度
+				<view class="content" bindtap="toQuestionPage" data-index="{{index}}">
+					<view class="topic-num" data-index="{{index}}">{{item.examNum}}</view>
+					<view class="topic-desc" data-index="{{index}}">入门测试 | 难度
 						<image class="i-star" src="../../assets/i-star.png" wx:if="{{item.difficulty >= 1}}"></image>
 						<image class="i-star" src="../../assets/i-star.png" wx:if="{{item.difficulty >= 2}}"></image>
 						<image class="i-star" src="../../assets/i-star.png" wx:if="{{item.difficulty >= 3}}"></image>
 						<image class="i-star" src="../../assets/i-star.png" wx:if="{{item.difficulty >= 4}}"></image>
 						<image class="i-star" src="../../assets/i-star.png" wx:if="{{item.difficulty >= 5}}"></image>
 					</view>
-					<view class="{{item.examIconClass}} icon" bindtap="toggleDesc" data-index="{{index}}"></view>
+					<!-- <view class="{{item.examIconClass}} icon" bindtap="toggleDesc" data-index="{{index}}"></view> -->
 				</view>
-				<view class="desc-box" wx:if="item.isExpand">
+
+				<!-- 试题展开 -->
+				<!-- <view class="desc-box" wx:if="item.isExpand">
 					<view class="type-list">
 						<view class="type-item" bindtap="selectedExamType" data-examtype="0" data-index="{{index}}">
 							<view class="selected" wx:if="{{item.examType === '0'}}"></view>
@@ -34,62 +41,8 @@
 						单选题</view>
 					</view>
 					<view class="start-btn btn" bindtap="starExam" data-index="{{index}}" data-examtype="{{item.examType}}">开始答题</view>
-				</view>
+				</view> -->
 			</view>
-
-			<!-- <view class="banner-item">
-				<view class="content">
-					<view class="topic-num">试题一</view>
-					<view class="topic-desc">入门测试 | 难度
-						<image class="i-star" src="../../assets/i-star.png"></image>
-					</view>
-					<view class="recover icon" bindtap="recover" data-index="1"></view>
-				</view>
-				<view class="desc-box dis-none">
-					<view class="type-list">
-						<view class="type-item"><view class="selected"></view>单项选择题</view>
-						<view class="type-item">单选题</view>
-						<view class="type-item">单选题</view>
-					</view>
-					<view class="start-btn btn">开始答题</view>
-				</view>
-			</view>
-
-			<view class="banner-item">
-				<view class="content">
-					<view class="topic-num">试题一</view>
-					<view class="topic-desc">入门测试 | 难度
-						<image class="i-star" src="../../assets/i-star.png"></image>
-					</view>
-					<view class="recover icon" bindtap="recover" data-index="2"></view>
-				</view>
-				<view class="desc-box dis-none">
-					<view class="type-list">
-						<view class="type-item"><view class="selected"></view>单项选择题</view>
-						<view class="type-item">单选题</view>
-						<view class="type-item">单选题</view>
-					</view>
-					<view class="start-btn btn">开始答题</view>
-				</view>
-			</view>
-
-			<view class="banner-item">
-				<view class="content">
-					<view class="topic-num">试题一</view>
-					<view class="topic-desc">入门测试 | 难度
-						<image class="i-star" src="../../assets/i-star.png"></image>
-					</view>
-					<view class="recover icon" bindtap="recover" data-index="3"></view>
-				</view>
-				<view class="desc-box dis-none">
-					<view class="type-list">
-						<view class="type-item"><view class="selected"></view>单项选择题</view>
-						<view class="type-item">单选题</view>
-						<view class="type-item">单选题</view>
-					</view>
-					<view class="start-btn btn">开始答题</view>
-				</view>
-			</view> -->
 			
 		</view>
 	</view>

@@ -1,11 +1,11 @@
 {
   "pages":[
     "pages/question/question",
+    "pages/topic-list/topic-list",
+    "pages/index/index",
+    "pages/topic/topic",
     "pages/gift/gift",
     "pages/myData/myData",
-    "pages/index/index",
-    "pages/topic-list/topic-list",
-    "pages/topic/topic",
     "pages/wrong/wrong",
     "pages/desc/desc",
     "pages/logs/logs"
@@ -14,6 +14,7 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#3f8cf4",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "办公妙学"
   }
 }

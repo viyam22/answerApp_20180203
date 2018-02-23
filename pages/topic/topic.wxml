@@ -5,19 +5,19 @@
 	<view class="container">
 		<image class="banner-title" src="../../assets/topic-title.png"></image>
 		<image class="banner-item" src="../../assets/banner-word.png" bindtap="toTopicListPage" data-type="0">
-			<image class="icon-wps" src="../../assets/i-wps.png"></image>
+			<!-- <image class="icon-wps" src="../../assets/i-wps.png"></image> -->
 		</image>
 
 		<image class="banner-item" src="../../assets/banner-ppt.png" bindtap="toTopicListPage" data-type="1">
-			<image class="icon-wps" src="../../assets/i-wps.png"></image>
+			<!-- <image class="icon-wps" src="../../assets/i-wps.png"></image> -->
 		</image>
 
 		<image class="banner-item" src="../../assets/banner-excel.png" bindtap="toTopicListPage" data-type="2">
-			<image class="icon-wps" src="../../assets/i-wps.png"></image>
+			<!-- <image class="icon-wps" src="../../assets/i-wps.png"></image> -->
 		</image>
 
 		<image class="banner-item" src="../../assets/banner-cad.png" bindtap="toTopicListPage" data-type="3">
-			<image class="icon-cad" src="../../assets/i-atuo-cad.png"></image>
+			<!-- <image class="icon-cad" src="../../assets/i-atuo-cad.png"></image> -->
 		</image>
 
 	</view>
