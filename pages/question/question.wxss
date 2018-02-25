@@ -35,7 +35,7 @@
 	font-weight: bold!important;
 }
 .hd > .time-danger {
-	color: red!important;
+	color: #f3594b!important;
 }
 .question-list {
 	width: 100%;

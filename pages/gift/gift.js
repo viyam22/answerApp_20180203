@@ -16,13 +16,20 @@ Page({
   data: {
   	// 礼品
   	needIntegral: 567,
-  	hasIntegral:1009,
+  	hasIntegral:567,
   	exchangeBtnClass: 'ban-btn',
 
   	// 填写信息
   	isShowPopup: false,
   	areaInfoColor: 'rgba(255, 255, 255, 0.5)',  // 省市区选择框文字颜色
-  	areaName: '省 市 区',    
+  	areaName: '省 市 区',
+    inputP: '',   // 省
+    inputC: '',   // 市
+    inputA: '',   // 区
+    inputName: '',
+    inputPhone: '',
+    inputAddress: '',
+    isCanSubmit: true,  // 防止重复提交 
 
     menuType: 0,
     begin: null,
@@ -79,14 +86,54 @@ Page({
 	},
 
 	showPopup: function() {
-		console.log('按下了兑换按钮');
 		var _this = this;
+    if (_this.data.hasIntegral < _this.data.needIntegral) return;
 		_this.setData({ isShowPopup: true })
 	},
 
-	test: function() {
-		console.log('按下了兑换按钮----');
-	},
+  sendInfo: function() {
+    var _this = this;
+
+    if (!_this.data.isCanSubmit) return;
+
+    var postData = {
+      name: _this.data.inputName.replace(/\s/g,""),
+      phone: _this.data.inputPhone.replace(/\s/g,""),
+      address: _this.data.inputAddress,
+      prov: _this.data.inputP,
+      country: _this.data.inputC,
+      area: _this.data.inputA
+    }
+
+    var title;
+    if (!postData.name) {
+      _this.showToast('请输入真实姓名');
+      return;
+    } else if (postData.phone.length !== 11) {
+      _this.showToast('请输入联系手机号码');
+      return;
+    } else if (!postData.address) {
+      _this.showToast('请输入具体的街道地址');
+      return;
+    }
+
+    wx.showLoading({
+      title: '提交中',
+    })
+
+    
+    // 提交信息接口
+    console.log('postData', postData);
+  },
+
+  showToast(title) {
+    wx.showToast({
+      title: title,
+      icon: 'none',
+      duration: 1500
+    })
+  },
+
 
 	/**
 	* 城市三级联动代码
@@ -196,8 +243,8 @@ Page({
     _this.setData({
       areaInfo: areaInfo,
       inputP: _this.data.provinces[value[0]].name,
-      inputA: _this.data.areas[value[2]].name,
       inputC: _this.data.citys[value[1]].name,
+      inputA: _this.data.areas[value[2]].name,
       areaName: _this.data.provinces[value[0]].name + ' ' + _this.data.citys[value[1]].name + ' ' + _this.data.areas[value[2]].name,
       areaInfoColor: '#fff'
     })
@@ -263,20 +310,10 @@ Page({
   // 获取表单信息
   getInputVal: function(e) {
     var _this = this;
-    var name = '', age = '', work = '', adress = '', phone = '';
+    var name = '', adress = '', phone = '';
     if (e.target.dataset.type === 'name') {
       _this.setData({
         inputName: e.detail.value,
-      })
-    };
-    if (e.target.dataset.type === 'age') {
-      _this.setData({
-        inputAge: e.detail.value,
-      })
-    };
-    if (e.target.dataset.type === 'work') {
-      _this.setData({
-        inputWork: e.detail.value,
       })
     };
     if (e.target.dataset.type === 'phone') {
@@ -284,14 +321,9 @@ Page({
         inputPhone: e.detail.value,
       })
     };
-    if (e.target.dataset.type === 'adress') {
+    if (e.target.dataset.type === 'address') {
       _this.setData({
-        address: e.detail.value,
-      })
-    };
-    if (e.target.dataset.type === 'vip') {
-      _this.setData({
-        inputVip: e.detail.value,
+        inputAddress: e.detail.value,
       })
     };
   },

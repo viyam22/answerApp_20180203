@@ -1,4 +1,6 @@
-//index.js
+const { api, config, path } = require('../../utils/config.js');
+const { changeNum } = require('../../utils/util.js');
+
 //获取应用实例
 const app = getApp()
 
@@ -52,12 +54,16 @@ Page({
 		}],
 		showData: [],
 		currentIndex: 0,    // 当前题目的下标
+		time: 0,        //  倒计时
+		isLessTime: false,    // 是否剩时不多
+		timeInterval: null,    // 计时器
 	},
 
 	onLoad: function(options) {
 		var _this = this;
 		// _this.showTypeExam(options.type);
 		_this.initData(options.examid);   // 从地址栏获取该试题的id传入参数
+		_this.countDownTime();		
 	},
 
 	initData: function(id) {
@@ -65,7 +71,7 @@ Page({
 		var initData = _this.data.initData;
 		// 接口获取数据，传入initData
 		for (var i = 0, len = initData.length; i < len; i++) {
-			initData[i].num = '试题' + _this.changeNum(i);
+			initData[i].num = '试题' + changeNum(i);
 			for (var j = 0; j < initData[i].option.length; j ++) {
 				initData[i].option[j].itemClass = 'item-default';
 			}
@@ -74,7 +80,6 @@ Page({
 			showData: initData[_this.data.currentIndex], 
 			initData: initData
 		})
-		console.log('showData', _this.data.showData)
 	},
 
 	// 选择答案
@@ -90,18 +95,15 @@ Page({
 			_this.setData({ showData: data })
 			return;
 		}
-		console.log('data.option[index].attr', data.option[index].attr)
 		
 		// 非多项选择答对时
 		if (data.option[index].attr) {
-			console.log('对了！！')
 			data.option[index].itemClass = 'item-right';
 			_this.nextQuestion(data);
 			return;
 		} 
 
 		// 非多项选择答错时
-		console.log('错了！！')
 		data.option[index].itemClass = 'item-wrong';
 		for (var i = 0, len = data.option.length; i < len; i++) {
 			if (data.option[i].attr) {
@@ -111,46 +113,73 @@ Page({
 		_this.nextQuestion(data);
 	},
 
+	// 多选判断
 	selectMul: function() {
 		var _this = this;
 		var data = _this.data.showData;
+		console.log('_this.data.showData', _this.data.showData);
 
 		for (var i = 0, len = data.option.length; i < len; i++) {
-			if (data.option[i].isSelected) {
-				data.option[index].itemClass = 'item-right';
+			if (data.option[i].attr) {  // 如果正确
+				data.option[i].itemClass = 'item-right';
+			}
+			if (data.option[i].isSelected && !data.option[i].attr) {  // 如果错误
+				data.option[i].itemClass = 'item-wrong';
 			}
 		}
+		console.log('data', data)
+		_this.nextQuestion(data);
 	},
 
 	// 下一题
 	nextQuestion: function(data) {
 		var _this = this;
+		var currentIndex = _this.data.currentIndex + 1;
 		_this.setData({ showData: data })
-		setTimeout(function() {
-			_this.setData({
-				currentIndex: _this.data.currentIndex++,
-				showData: _this.data.initData[_this.data.currentIndex + 1]
+		
+		// 完成答题
+		if (currentIndex >= _this.data.initData.length) {
+			clearInterval(_this.data.timeInterval);
+			wx.showToast({
+			  title: '完成答题',
+			  icon: 'success',
+			  duration: config.nextQuestionTime
 			})
-		}, 2000)
+			setTimeout(() => {
+				wx.navigateTo({
+		      url: path.indexPage
+		    })
+			}, config.nextQuestionTime)
+			return;
+		}
+
+		setTimeout(() => {
+			_this.setData({
+				currentIndex: currentIndex,
+				showData: _this.data.initData[currentIndex]
+			})
+		}, config.nextQuestionTime)
 	},
 
+	// 时间倒计时
+	countDownTime: function() {
+		var _this = this;
+		// 初始化时间
+		_this.setData({ time: config.questionTime })
 
-	// 数字改汉字1-99
-	changeNum: function(i) {
-		var chineseNum = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
-		var chineseNum;
-		if (i <= 10) {
-			return chineseNum[i];
-		} else if (i > 10 && i < 100) {
-			var decade = Math.floor(i / 10);
-			var result;
-			if (decade === 1) {
-				return '十' + chineseNum[i - decade * 10];
-			} else {
-				return chineseNum[decade + 1] + '十' + chineseNum[i - decade * 10]
+		// 倒计时
+		var timeInterval = setInterval(function() {
+			if (_this.data.time === config.lessTime + 1) {
+				_this.setData({ isLessTime: true })
 			}
-		} 
-	},
+			if (_this.data.time === 0) {
+				clearInterval(_this.data.timeInterval);
+				return;
+			}
+			_this.setData({ time: _this.data.time-1 })
+		}, 1000)
+		_this.setData({ timeInterval: timeInterval })
+	}
 
 
 	// 显示相应的题库

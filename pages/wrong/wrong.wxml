@@ -9,61 +9,36 @@
 
 		<view class="banner-list">
 			<view class="banner-item">
-				<image class="banner-img" src="../../assets/banner-word.png">
-					<view class="expand icon"></view>
+				<image class="banner-img" src="../../assets/banner-word.png" bindtap="toTopicListPage" data-type="0">
+					<!-- <view class="expand icon"></view> -->
 				</image>
-				<view class="desc-box">
+				<!-- <view class="desc-box">
 					<view class="type-list">
 						<view class="type-item"><view class="selected"></view>单项选择题</view> 
 						<view class="type-item">单选题</view>
 						<view class="type-item">单选题</view>
 					</view>
 					<view class="start-btn btn">开始答题</view>
-				</view>
+				</view> -->
 			</view>
 
 			<view class="banner-item">
-				<image class="banner-img" src="../../assets/banner-ppt.png">
-					<view class="expand icon"></view>
+				<image class="banner-img" src="../../assets/banner-ppt.png" bindtap="toTopicListPage" data-type="1">
+					<!-- <view class="expand icon"></view> -->
 				</image>
-				<view class="desc-box dis-none">
-					<view class="type-list">
-						<view class="type-item"><view class="selected"></view>单项选择题</view>
-						<view class="type-item">单选题</view>
-						<view class="type-item">单选题</view>
-					</view>
-					<view class="start-btn btn">开始答题</view>
-				</view>
 			</view>
 
 			<view class="banner-item">
-				<image class="banner-img" src="../../assets/banner-excel.png">
-					<view class="expand icon"></view>
+				<image class="banner-img" src="../../assets/banner-excel.png" bindtap="toTopicListPage" data-type="2">
+					<!-- <view class="expand icon"></view> -->
 				</image>
-				<view class="desc-box dis-none">
-					<view class="type-list">
-						<view class="type-item"><view class="selected"></view>单项选择题</view>
-						<view class="type-item">单选题</view>
-						<view class="type-item">单选题</view>
-					</view>
-					<view class="start-btn btn">开始答题</view>
-				</view>
 			</view>
 
 			<view class="banner-item">
-				<image class="banner-img" src="../../assets/banner-cad.png">
-					<view class="expand icon"></view>
+				<image class="banner-img" src="../../assets/banner-cad.png" bindtap="toTopicListPage" data-type="3">
+					<!-- <view class="expand icon"></view> -->
 				</image>
-				<view class="desc-box dis-none">
-					<view class="type-list">
-						<view class="type-item"><view class="selected"></view>单项选择题</view>
-						<view class="type-item">单选题</view>
-						<view class="type-item">单选题</view>
-					</view>
-					<view class="start-btn btn">开始答题</view>
-				</view>
 			</view>
-			
 		</view>
 	</view>
 </view>

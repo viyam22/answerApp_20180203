@@ -1,15 +1,11 @@
-//index.js
+const { api, config, path } = require('../../utils/config.js');
+
 //获取应用实例
 const app = getApp()
 
 Page({
   data: {
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    userInfo: null,
   },
   onLoad: function () {
     console.log('app:', app);
@@ -44,28 +40,28 @@ Page({
   // 跳转页面到题库
   toTopicPage: function() {
     wx.navigateTo({
-      url: '../topic/topic'
+      url: path.topicPage
     })
   },
 
   // 跳转页面到活动说明页
   toDescPage: function() {
     wx.navigateTo({
-      url: '../desc/desc'
+      url: path.descPage
     })
   },
 
   // 跳转页面到礼品中心页面
   toGiftPage: function() {
     wx.navigateTo({
-      url: '../gift/gift'
+      url: path.giftPage
     })
   },
 
   // 跳转页面到我的错题库
   toWrongPage: function() {
     wx.navigateTo({
-      url: '../wrong/wrong'
+      url: path.wrongPage
     })
   },
 })

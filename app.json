@@ -1,14 +1,12 @@
 {
   "pages":[
-    "pages/question/question",
-    "pages/topic-list/topic-list",
     "pages/index/index",
-    "pages/topic/topic",
-    "pages/gift/gift",
-    "pages/myData/myData",
+    "pages/question/question",
     "pages/wrong/wrong",
-    "pages/desc/desc",
-    "pages/logs/logs"
+    "pages/gift/gift",
+    "pages/topic-list/topic-list",
+    "pages/topic/topic",
+    "pages/desc/desc"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -1,3 +1,4 @@
+const { api, config, path } = require('../../utils/config.js');
 const app = getApp()
 
 Page({
@@ -11,7 +12,7 @@ Page({
   toTopicListPage: function(e) {
   	console.log('e', e);
     wx.navigateTo({
-      url: '../topic-list/topic-list?type=' + e.target.dataset.type
+      url: path.topicListPage + '?type=' + e.target.dataset.type
     })
   }
 })

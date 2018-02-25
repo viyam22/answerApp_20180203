@@ -24,7 +24,7 @@
 	width: 652rpx;
 	height: 198rpx;
 	position: relative;
-	margin: 25rpx auto 0;
+	margin: 12rpx auto 0;
 	display: block;
 }
 .shadow {
@@ -38,6 +38,7 @@
 	transform: translateY(-40rpx);
 	z-index: 15;
 	position: relative;
+	padding-top: 13rpx;
 }
 .banner-img .icon {
 	background-size: contain;

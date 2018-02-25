@@ -1,6 +1,3 @@
 {
-  "backgroundTextStyle":"light",
-  "navigationBarBackgroundColor": "#3f8cf4",
-  "navigationBarTitleText": "错题库",
-  "navigationBarTextStyle":"white"
+  "navigationBarBackgroundColor": "#3f8cf4"
 }

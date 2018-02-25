@@ -14,10 +14,9 @@
 }
 .exchange-btn {
 	position: absolute;
-	top: 788rpx;
+	top: 900rpx;
 	left: 50%;
 	transform: translateX(-50%);
-  z-index: 999;
 }
 .gift-info {
 	/*margin: 626rpx auto 0;*/
@@ -94,7 +93,7 @@
 .textarea-box {
   width: 544rpx;
   height: 163rpx;
-  padding: 27rpx 20rpx;
+  padding: 18rpx 20rpx;
   box-sizing: border-box;
   line-height: 36rpx;
   border-radius: 10rpx;

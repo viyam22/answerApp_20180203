@@ -1,4 +1,5 @@
-//index.js
+const { api, config, path } = require('../../utils/config.js');
+const { changeNum } = require('../../utils/util.js');
 //获取应用实例
 const app = getApp()
 
@@ -18,13 +19,11 @@ Page({
 			examId: 0, 
 		}],
 		examData: [],  // 处理过的数据
-		type: ''       // 题库类型
+		type: '',       // 题库类型
 	},
 	onLoad: function(options) {
 		var _this = this;
 		_this.setData({ type: options.type })
-		_this.showTypePage(options.type);
-
 		// 接口拿数据
 		// 放入initData中
 		// 再执行_this.initExamData();
@@ -46,48 +45,37 @@ Page({
 				examId: 0,        // 试题id
 			}
 			
-			attr.examNum = '试题' + _this.changeNum(i);
+			attr.examNum = '试题' + changeNum(i);
 			examData.push(attr);
 		}
 		_this.setData({ examData: examData });
 		console.log(_this.data.examData);
 	},
 
-	// 将数字转化为汉字
-	changeNum: function(i) {
-		var chineseNum = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
-		var chineseNum;
-		if (i <= 10) {
-			return chineseNum[i];
-		} else if (i > 10 && i < 20) {
-			return chineseNum[i - 10];
-		} //  后续继续...
-	},
-
-	// 显示相应的题库
-	showTypePage: function(type) {
-		var barTitle;
-		switch (type) {
-			case '0':
-				barTitle = 'Word题库';
-				break;
-			case '1':
-				barTitle = 'Power point题库';
-				break;
-			case '2':
-				barTitle = 'Excel题库';
-				break;
-			case '3':
-				barTitle = 'CAD题库';
-				break;
-			default:
-				barTitle = '题库';
-				break;
-		};
-		wx.setNavigationBarTitle({
-		  title: barTitle
-		})
-	},
+	// // 显示相应的题库
+	// showTypePage: function(type) {
+	// 	var barTitle;
+	// 	switch (type) {
+	// 		case '0':
+	// 			barTitle = 'Word题库';
+	// 			break;
+	// 		case '1':
+	// 			barTitle = 'Power point题库';
+	// 			break;
+	// 		case '2':
+	// 			barTitle = 'Excel题库';
+	// 			break;
+	// 		case '3':
+	// 			barTitle = 'CAD题库';
+	// 			break;
+	// 		default:
+	// 			barTitle = '题库';
+	// 			break;
+	// 	};
+	// 	wx.setNavigationBarTitle({
+	// 	  title: barTitle
+	// 	})
+	// },
 
 	// 收起、展开试题详情
 	// toggleDesc: function(e) {
@@ -129,7 +117,7 @@ Page({
 	toQuestionPage: function(e) {
 		var _this = this;
 		wx.navigateTo({
-	      url: '../question/question?examid=' + 
+	      url: path.questionPage + '?examid=' + 
 	      		_this.data.initData[e.target.dataset.index].examId
 	    })
 	}

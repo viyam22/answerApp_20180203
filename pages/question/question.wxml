@@ -3,7 +3,7 @@
 	<image class="bg" src="../../assets/bg1.png"></image>
 	<view class="hd">
 		<text class="label">{{showData.label}}</text>
-		<view class="time">120<text class="time-small">s</text></view>
+		<view class="time {{isLessTime ? 'time-danger' : ''}}">{{time}}<text class="time-small">s</text></view>
 		<view class="title">{{showData.title}}</view>
 	</view>
 	<view class="question-list">
