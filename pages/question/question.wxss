@@ -94,3 +94,36 @@
 .ok-btn {
 	margin: 72rpx auto 0;
 }
+.box-border {
+	background-color: rgba(63, 140, 244, 0.3);
+}
+.box-border {
+	width: 636rpx;
+	height: 790rpx;
+}
+.box-bg {	
+	width: 600rpx;
+	height: 750rpx;
+}
+.box-name {	
+	height: 108rpx;
+	line-height: 108rpx;
+}
+.i-gold {
+	width: 303rpx;
+	height: 187rpx;
+	display: block;
+	margin: 120rpx auto 40rpx;
+}
+.popup .content {
+	width: 100%;
+	font-size: 36rpx;
+	text-align: center;
+	line-height: 56rpx;
+}
+.popup .tip {
+	width: 100%;
+	font-size: 30rpx;
+	color: #999;
+	text-align: center;
+}
