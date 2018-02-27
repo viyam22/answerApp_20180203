@@ -57,6 +57,7 @@ Page({
 		time: 0,        //  倒计时
 		isLessTime: false,    // 是否剩时不多
 		timeInterval: null,    // 计时器
+		isShowPopup: false,    // 是否显示答题完成弹窗
 	},
 
 	onLoad: function(options) {
@@ -140,15 +141,8 @@ Page({
 		// 完成答题
 		if (currentIndex >= _this.data.initData.length) {
 			clearInterval(_this.data.timeInterval);
-			wx.showToast({
-			  title: '完成答题',
-			  icon: 'success',
-			  duration: config.nextQuestionTime
-			})
 			setTimeout(() => {
-				wx.navigateTo({
-		      url: path.indexPage
-		    })
+				_this.setData({ isShowPopup: true })
 			}, config.nextQuestionTime)
 			return;
 		}
@@ -159,6 +153,15 @@ Page({
 				showData: _this.data.initData[currentIndex]
 			})
 		}, config.nextQuestionTime)
+	},
+
+	// 回到首页
+	toIndexPage: function() {
+		var _this = this;
+		_this.setData({ isShowPopup: false })
+		wx.navigateTo({
+	      url: path.indexPage
+	    })
 	},
 
 	// 时间倒计时

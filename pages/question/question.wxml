@@ -14,4 +14,18 @@
 
 		<view class="btn ok-btn" wx:if="{{showData.type === 1}}" bindtap="selectMul">确定</view>
 	</view>
+
+	<view class="popup" wx:if="{{isShowPopup}}">
+    <view class="box-border info-border">
+      <view class="box-bg">
+        <view class="box-name">答题结束</view>
+        <view class="info-container">
+        	<image class="i-gold" src="../../assets/i-gold.png"></image>
+        	<view class="content">恭喜你获得10积分</view>
+        	<view class="tip">积分可兑换奖品</view>
+          <view class="ok-btn btn" bindtap="toIndexPage">确定</view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
