@@ -1,4 +1,5 @@
 //app.js
+const { api, config, path } = require('utils/config.js');
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -10,6 +11,7 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        this.globalData.code = res.code;
       }
     })
     // 获取用户信息
@@ -20,8 +22,23 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
-
+              this.globalData.userInfo = res.userInfo;
+              var _this = this;
+      
+              //获取缓存user_id
+              wx.getStorage({
+                key: 'user_id',
+                success: function (res) {
+                  _this.globalData.user_id = res.data;
+                
+                },
+                fail:function(res){
+                  _this.get_openid();
+                }
+              })
+       
+            
+            
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -35,5 +52,28 @@ App({
   },
   globalData: {
     userInfo: null
+  },
+  get_openid:function(){
+    var _this = this;
+    wx.request({
+      url: config.route + 'index/Weixin/index',
+      data: {
+        code: _this.globalData.code,
+        open_name: _this.globalData.userInfo.nickName,
+        open_face: _this.globalData.userInfo.avatarUrl,
+        token: config.token
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        //缓存user_id
+        wx.setStorage({
+          key: "user_id",
+          data: res.data.id
+        })
+        _this.globalData.user_id = res.data.id;
+      }
+    })
   }
 })

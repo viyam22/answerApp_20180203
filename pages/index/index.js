@@ -6,9 +6,19 @@ const app = getApp()
 Page({
   data: {
     userInfo: null,
+
   },
   onLoad: function () {
-    console.log('app:', app);
+  
+    wx.showLoading({
+      title: '加载中...',
+    });
+    var has_open=setInterval(function(){
+      if (app.globalData.user_id){
+          clearInterval(has_open);
+          wx.hideLoading();
+        }
+    },1000);
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
