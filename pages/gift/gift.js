@@ -114,6 +114,9 @@ Page({
 
 	showPopup: function() {
 		var _this = this;
+
+    _this.setData({ isShowPopup: true });
+    return false;
     if (_this.data.hasIntegral < _this.data.needIntegral) return;
     //点击兑换 请求后台记录
     //查看是否填写信息

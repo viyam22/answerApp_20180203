@@ -40,7 +40,7 @@
 
 .box-border {
 	width: 638rpx;
-	height: 942rpx;
+	height: 982rpx;
 	margin: 106rpx auto 0;
 	border-radius: 32rpx;
 	padding: 18rpx;
@@ -52,7 +52,7 @@
 	position: absolute;
 	top: 18rpx;
 	width: 602rpx;
-	height: 906rpx;
+	height: 950rpx;
 	z-index: -1;
 	border-radius: 32rpx;
 	background-color: #fff;

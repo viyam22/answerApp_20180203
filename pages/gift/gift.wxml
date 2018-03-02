@@ -26,7 +26,11 @@
           <view class="select-district" bindtap="selectDistrict" style="color: {{areaInfoColor}};">{{areaName}}<image class="i-left" src="../../assets/i-left.png"></image></view>
 
           <textarea class="textarea-box" placeholder="请输入具体的街道地址" placeholder-class="input-text" bindinput="getInputVal" data-type="address"></textarea>
-          <view class="tip">注：请如实填写兑奖信息，凭填写信息进行兑奖，谢谢。</view>
+          <view class="tip">
+          注： 1、本小程序兑奖活动仅限韶关供电局职工参加.
+             2、请职工如实准确填写兑换信息，凭真实有效的登记信息进行兑换。
+          </view>
+         
           <view class="ok-btn btn" bindtap="sendInfo">确定</view>
         </view>
       </view>

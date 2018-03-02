@@ -30,7 +30,7 @@
 	height: 200rpx;
 	line-height: 200rpx;
 }
-.hd > .time > .time-small {
+.hd .time  .time-small {
 	font-size: 80rpx!important;
 	font-weight: bold!important;
 }

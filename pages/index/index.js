@@ -95,4 +95,22 @@ Page({
       url: path.wrongPage
     })
   },
+  onShareAppMessage: function (res) {
+    var _this = this;
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+    }
+    return {
+      title: config.share_msg,
+      imageUrl: config.share_image,
+      path: '/pages/index/index',
+      success: function (res) {
+        // 转发成功
+        console.log(res);
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
 })
