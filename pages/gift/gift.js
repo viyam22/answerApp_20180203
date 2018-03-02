@@ -18,32 +18,10 @@ Page({
   data: {
     initData: {
       departmentArray: ['供电局1', '供电局2'],   // 所属供电局的值
-      myGift: [{
-        name: '小米闹钟音响',   // 我的奖品
-        needIntegral: 500,    // 需要积分
-        imgUrl: ''   // 奖品图片链接
-      },{
-        name: '小米闹钟音响',   // 我的奖品
-        needIntegral: 500,    // 需要积分
-        imgUrl: ''   // 奖品图片链接
-      },{
-        name: '小米闹钟音响',   // 我的奖品
-        needIntegral: 500,    // 需要积分
-        imgUrl: ''   // 奖品图片链接
-      },{
-        name: '小米闹钟音响',   // 我的奖品
-        needIntegral: 500,    // 需要积分
-        imgUrl: ''   // 奖品图片链接
-      },{
-        name: '小米闹钟音响',   // 我的奖品
-        needIntegral: 500,    // 需要积分
-        imgUrl: ''   // 奖品图片链接
-      },]
+      myGift: []// 我的奖品
     },
   	// 礼品
-    prizeImg:'',
-    prizeName: '',
-  	needIntegral: 567,
+    prize:[],
   	hasIntegral:567,
   	exchangeBtnClass: 'ban-btn',
 
@@ -92,16 +70,14 @@ Page({
         token: config.token
       },
       success: function (res) {
-        console.log('gift',res)
         wx.hideLoading();
         _this.setData({
-          prizeImg: res.data.img,
-          prizeName: res.data.title,
-          needIntegral: res.data.integral,
+          prize: res.data,
           hasIntegral: app.globalData.sore
         })
       }
     });
+    
   },
 
  /**
@@ -267,11 +243,37 @@ Page({
 
   // 显示我的奖品
   showGift: function() {
-    if (this.data.initData.myGift.length > 0) {
-      this.setData({ isShowGiftPopup: true })
-    } else {
-      this.setData({ isShowNoneGiftPopup: true })
-    }
+    var _this = this;
+    wx.showLoading({
+      title: '加载中...',
+    });
+    //我的奖品
+    wx.request({
+      url: config.route + api.myGift,
+      data: {
+        user_id: app.globalData.user_id,
+        token: config.token
+      },
+      success: function (res) {
+        wx.hideLoading();
+        console.log(res);
+        if (res.data.code == 1){
+          _this.setData({
+            myGift: res.data.result,
+            isShowGiftPopup: true 
+          })
+        }else{
+          _this.setData({
+            isShowNoneGiftPopup: true 
+          })
+        }
+      }
+    });
+    // if (this.data.initData.myGift.length > 0) {
+    //   this.setData({ })
+    // } else {
+    //   this.setData({ isShowNoneGiftPopup: true })
+    // }
   },
 
 
