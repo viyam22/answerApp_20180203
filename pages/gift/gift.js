@@ -1,3 +1,5 @@
+const { api, config, path } = require('../../utils/config.js');
+
 // directory.js
 var address = require('../../utils/city.js')
 var animation
@@ -15,6 +17,8 @@ Page({
    */
   data: {
   	// 礼品
+    prizeImg:'',
+    prizeName: '',
   	needIntegral: 567,
   	hasIntegral:567,
   	exchangeBtnClass: 'ban-btn',
@@ -47,6 +51,29 @@ Page({
     city: '',
     area: '',
   },
+  onLoad: function () {
+    wx.showLoading({
+      title: '加载中...',
+    });
+    //请求后台获取礼品
+    var _this = this;
+    wx.request({
+      url: config.route + api.getPrize,
+      data: {
+        token: config.token
+      },
+      success: function (res) {
+        wx.hideLoading();
+        _this.setData({
+          prizeImg: res.data.img,
+          prizeName: res.data.title,
+          needIntegral: res.data.integral,
+          hasIntegral: app.globalData.sore
+        })
+      }
+    });
+  },
+
  /**
    * 生命周期函数--监听页面加载
    */
@@ -88,7 +115,35 @@ Page({
 	showPopup: function() {
 		var _this = this;
     if (_this.data.hasIntegral < _this.data.needIntegral) return;
-		_this.setData({ isShowPopup: true })
+    //点击兑换 请求后台记录
+    //查看是否填写信息
+    wx.request({
+      url: config.route + api.getUser,
+      data: {
+        user_id: app.globalData.user_id,
+        token: config.token
+      },
+      success: function (res) {
+        //改变积分
+        _this.setData({ hasIntegral: res.data.mysore });
+        //提示
+        wx.showModal({
+          title: '温馨提示',
+          content: '兑换完成！',
+          showCancel:false,
+          success: function (re) {
+            if (re.confirm) {
+              if (res.data.code == 1) {
+                //已填写信息
+                return false;
+              } else {
+                _this.setData({ isShowPopup: true });
+              }
+            } 
+          }
+        });
+      }
+    });
 	},
 
   sendInfo: function() {
@@ -120,17 +175,41 @@ Page({
     wx.showLoading({
       title: '提交中',
     })
-
-    
-    // 提交信息接口
+    // 提交信息接口 提交个人信息
     console.log('postData', postData);
+    wx.request({
+      url: config.route + api.addUser,
+      data: {
+        user_info: postData,
+        user_id: app.globalData.user_id,
+        token: config.token
+      },
+      complete:function(){
+        wx.hideLoading();
+      },
+      success: function (res) {
+        if (res.data.code == 1) {
+          //提交成功
+          _this.showToast('登记成功');
+          
+        } else {
+          //提交失败
+          _this.showToast(res.data.msg);
+        }
+      }
+    });
   },
 
   showToast(title) {
     wx.showToast({
       title: title,
       icon: 'none',
-      duration: 1500
+      duration: 1500,
+      success:function(){
+        wx.navigateBack({
+          delta: 4
+        })
+      }
     })
   },
 

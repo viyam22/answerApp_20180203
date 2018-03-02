@@ -12,9 +12,20 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         this.globalData.code = res.code;
+        //获取缓存user_id
+        wx.getStorage({
+          key: 'user_id',
+          success: function (res) {
+            _this.globalData.user_id = res.data;
+          },
+          fail: function (res) {
+            _this.get_openid();
+          }
+        })
       }
     })
     // 获取用户信息
+    var _this = this;
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -22,23 +33,21 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo;
-              var _this = this;
-      
-              //获取缓存user_id
-              wx.getStorage({
-                key: 'user_id',
-                success: function (res) {
-                  _this.globalData.user_id = res.data;
-                
+              _this.globalData.userInfo = res.userInfo;
+              //保存昵称头像
+              wx.request({
+                url: config.route + api.WXopens,
+                data: {
+                  open_name: _this.globalData.userInfo.nickName,
+                  open_face: _this.globalData.userInfo.avatarUrl,
+                  token: config.token,
+                  user_id: _this.globalData.user_id
                 },
-                fail:function(res){
-                  _this.get_openid();
+                success: function (res) {
+                  console.log('login:' + res.data.uid);
                 }
               })
-       
-            
-            
+          
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -56,17 +65,13 @@ App({
   get_openid:function(){
     var _this = this;
     wx.request({
-      url: config.route + 'index/Weixin/index',
+      url: config.route + api.WXlogin,
       data: {
         code: _this.globalData.code,
-        open_name: _this.globalData.userInfo.nickName,
-        open_face: _this.globalData.userInfo.avatarUrl,
         token: config.token
       },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
       success: function (res) {
+     
         //缓存user_id
         wx.setStorage({
           key: "user_id",
@@ -75,5 +80,23 @@ App({
         _this.globalData.user_id = res.data.id;
       }
     })
-  }
+  },
+  onShareAppMessage: function (res) {
+    var _this = this;
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+    }
+    return {
+      title: config.share_msg,
+      imageUrl: config.share_image,
+      path: '/pages/index/index',
+      success: function (res) {
+        // 转发成功
+        console.log(res);
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
 })

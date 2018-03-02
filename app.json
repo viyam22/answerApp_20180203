@@ -6,7 +6,9 @@
     "pages/wrong/wrong",
     "pages/topic-list/topic-list",
     "pages/topic/topic",
-    "pages/desc/desc"
+    "pages/desc/desc",
+    "pages/wrong-list/wrong-list",
+    "pages/wrong-question/wrong-question"
   ],
   "window":{
     "backgroundTextStyle":"light",

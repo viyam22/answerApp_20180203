@@ -1,24 +1,45 @@
 const { api, config, path } = require('../../utils/config.js');
 
 //获取应用实例
-const app = getApp()
+const app = getApp();
+
 
 Page({
   data: {
     userInfo: null,
+    sore:'',
 
   },
-  onLoad: function () {
+  onShow: function () {
   
     wx.showLoading({
       title: '加载中...',
     });
+    var _this = this;
     var has_open=setInterval(function(){
       if (app.globalData.user_id){
           clearInterval(has_open);
           wx.hideLoading();
+          //请求后台获取个人积分
+          wx.request({
+            url: config.route + api.mySore,
+            data: {
+              user_id: app.globalData.user_id,
+              token: config.token
+            },
+            success: function (res) {
+              app.globalData.sore = res.data;
+              _this.setData({
+                sore: res.data
+              });
+            }
+          });
+
+        }else{
+          return false;
         }
     },1000);
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

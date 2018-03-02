@@ -8,37 +8,11 @@
 		</image>
 
 		<view class="banner-list">
-			<view class="banner-item">
-				<image class="banner-img" src="../../assets/banner-word.png" bindtap="toTopicListPage" data-type="0">
-					<!-- <view class="expand icon"></view> -->
-				</image>
-				<!-- <view class="desc-box">
-					<view class="type-list">
-						<view class="type-item"><view class="selected"></view>单项选择题</view> 
-						<view class="type-item">单选题</view>
-						<view class="type-item">单选题</view>
-					</view>
-					<view class="start-btn btn">开始答题</view>
-				</view> -->
-			</view>
-
-			<view class="banner-item">
-				<image class="banner-img" src="../../assets/banner-ppt.png" bindtap="toTopicListPage" data-type="1">
-					<!-- <view class="expand icon"></view> -->
+			<view class="banner-item" wx:for="{{types}}">
+				<image class="banner-img" src="{{item.img}}" data-id="{{item.id}}" data-title="{{item.type_name}}" bindtap="toTopicListPage" data-type="0">
 				</image>
 			</view>
 
-			<view class="banner-item">
-				<image class="banner-img" src="../../assets/banner-excel.png" bindtap="toTopicListPage" data-type="2">
-					<!-- <view class="expand icon"></view> -->
-				</image>
-			</view>
-
-			<view class="banner-item">
-				<image class="banner-img" src="../../assets/banner-cad.png" bindtap="toTopicListPage" data-type="3">
-					<!-- <view class="expand icon"></view> -->
-				</image>
-			</view>
 		</view>
 	</view>
 </view>

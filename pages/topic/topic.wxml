@@ -4,21 +4,11 @@
 	<image class="bg" src="../../assets/bg0.png"></image>
 	<view class="container">
 		<image class="banner-title" src="../../assets/topic-title.png"></image>
-		<image class="banner-item" src="../../assets/banner-word.png" bindtap="toTopicListPage" data-type="0">
-			<!-- <image class="icon-wps" src="../../assets/i-wps.png"></image> -->
-		</image>
 
-		<image class="banner-item" src="../../assets/banner-ppt.png" bindtap="toTopicListPage" data-type="1">
-			<!-- <image class="icon-wps" src="../../assets/i-wps.png"></image> -->
+    <view wx:for="{{types}}" wx:key="{{xxx}}">
+		<image class="banner-item" src="{{item.img}}" bindtap="toTopicListPage" data-id="{{item.id}}" data-title="{{item.type_name}}">
 		</image>
-
-		<image class="banner-item" src="../../assets/banner-excel.png" bindtap="toTopicListPage" data-type="2">
-			<!-- <image class="icon-wps" src="../../assets/i-wps.png"></image> -->
-		</image>
-
-		<image class="banner-item" src="../../assets/banner-cad.png" bindtap="toTopicListPage" data-type="3">
-			<!-- <image class="icon-cad" src="../../assets/i-atuo-cad.png"></image> -->
-		</image>
+    </view>
 
 	</view>
 </view>

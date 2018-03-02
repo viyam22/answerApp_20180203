@@ -2,11 +2,11 @@
 <view class="{{hasIntegral >= needIntegral ? 'btn' : 'ban-btn'}} exchange-btn" bindtap="showPopup">兑换</view>
   <image class="bg" src="../../assets/bg1.png"></image>
   <view class="box-border gift-border">
-    <image class="gift-img" src="../../assets/gift.png"></image>
-    <view class="box-name">小米闹钟音响</view>
+    <image class="gift-img" src="{{prizeImg}}"></image>
+    <view class="box-name">{{prizeName}}</view>
     <view class= "gift-info">
       <view class="integral-item">需要积分：<image class="i-integral" src="../../assets/i-integral.png"></image><text>{{needIntegral}}</text></view>
-      <view class="integral-item">你的积分：<image class="i-integral" src="../../assets/i-integral.png"></image><text>{{hasIntegral}}</text></view>
+      <view class="integral-item">我的积分：<image class="i-integral" src="../../assets/i-integral.png"></image><text>{{hasIntegral}}</text></view>
     </view>
     
   </view>

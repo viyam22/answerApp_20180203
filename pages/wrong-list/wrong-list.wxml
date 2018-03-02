@@ -8,7 +8,7 @@
 			<image class="i-integral" src="../../assets/i-integral.png"></image>
 			<text class="txt-integral">{{hasIntegral}}</text>
 			<view class="banner-title"><text>{{title}}</text>题库</view>
-			<text class="banner-txt">每天仅限作答1次<text>{{title}}</text>题库\n每个题库包含单选题，多选题，判断题</text>
+			<text class="banner-txt">每个题库包含单选题，多选题，判断题</text>
 			<image class="shadow" src="../../assets/shadow.png"></image>
 		</view>
 

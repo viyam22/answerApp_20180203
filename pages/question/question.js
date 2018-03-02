@@ -6,65 +6,38 @@ const app = getApp()
 
 Page({
 	data: {
-		initData: [{
-			title: '在Word 2003中，设定打印纸张大小时，应当使用的命令是',  //题目
-			label: '第一题 判断题',  
-			type: 2,  //题目类型 0是单项选择  1是多项 2是判断
-			option: [{
-				text: '文件"菜单中的"页面设置"命令',   
-				attr: false,       //选项是否正确
-			},{
-				text: '文件"菜单中的"页面设置"命令',   
-				attr: true,       //选项是否正确
-			}] 
-		},{
-			title: '在Word 2003中，设定打印纸张大小时，应当使用的命令是',  //题目
-			label: '第二题 单项选择题',  
-			type: 0,  //题目类型 0是单项选择  1是多项 2是判断
-			option: [{
-				text: '文件"菜单中的"页面设置"命令',   
-				attr: false,       //选项是否正确
-			},{
-				text: '文件"菜单中的"页面设置"命令',   
-				attr: false,       //选项是否正确
-			},{
-				text: '文件"菜单中的"页面设置"命令',   
-				attr: true,       //选项是否正确
-			},{
-				text: '文件"菜单中的"页面设置"命令',   
-				attr: false,       //选项是否正确
-			}] 
-		},{
-			title: '在Word 2003中，设定打印纸张大小时，应当使用的命令是',  //题目
-			label: '第三题 多项选择题',  
-			type: 1,  //题目类型 0是单项选择  1是多项 2是判断
-			option: [{
-				text: '文件"菜单中的"页面设置"命令',   
-				attr: false,       //选项是否正确
-			},{
-				text: '文件"菜单中的"页面设置"命令',   
-				attr: true,       //选项是否正确
-			},{
-				text: '文件"菜单中的"页面设置"命令',   
-				attr: true,       //选项是否正确
-			},{
-				text: '文件"菜单中的"页面设置"命令',   
-				attr: false,       //选项是否正确
-			}] 
-		}],
+    initData: [],       //题目
 		showData: [],
 		currentIndex: 0,    // 当前题目的下标
 		time: 0,        //  倒计时
 		isLessTime: false,    // 是否剩时不多
 		timeInterval: null,    // 计时器
 		isShowPopup: false,    // 是否显示答题完成弹窗
+    type_id:0,//题型ID
+    sore:0,//积分
 	},
 
 	onLoad: function(options) {
 		var _this = this;
-		// _this.showTypeExam(options.type);
-		_this.initData(options.examid);   // 从地址栏获取该试题的id传入参数
-		_this.countDownTime();		
+    _this.setData({
+      type_id: options.type_id
+    });
+    //获取题目
+    wx.request({
+      url: config.route + api.getTest,
+      data: {
+        type_id: options.type_id,
+        number_id: options.number_id,
+        token: config.token
+      },
+      success: function (res) {
+        _this.setData({
+          initData: res.data
+        });
+        _this.initData();
+        _this.countDownTime();
+      }
+    });
 	},
 
 	initData: function(id) {
@@ -93,17 +66,35 @@ Page({
 		if (data.type === 1) {  
 			data.option[index].isSelected = true;
 			data.option[index].itemClass = 'item-selected';
-			_this.setData({ showData: data })
+			_this.setData({ showData: data  })
 			return;
 		}
-		
+
 		// 非多项选择答对时
 		if (data.option[index].attr) {
 			data.option[index].itemClass = 'item-right';
-			_this.nextQuestion(data);
-			return;
-		} 
+	
+      //增加积分
+      var n = parseInt(_this.data.sore) + parseInt(data.sore);
+      _this.setData({ sore: n });
+      _this.nextQuestion(data);
+      return false;
+		}else{
+      //提交后台记录错题
+      wx.request({
+        url: config.route + api.addErroe,
+        data: {
+          user_id: app.globalData.user_id,
+          tid: data.id,
+          content: data.option[index],
+          token: config.token
+        },
+        success: function (res) {
 
+        }
+      });
+    } 
+    
 		// 非多项选择答错时
 		data.option[index].itemClass = 'item-wrong';
 		for (var i = 0, len = data.option.length; i < len; i++) {
@@ -118,17 +109,35 @@ Page({
 	selectMul: function() {
 		var _this = this;
 		var data = _this.data.showData;
-		console.log('_this.data.showData', _this.data.showData);
-
+    var isError=0;
 		for (var i = 0, len = data.option.length; i < len; i++) {
 			if (data.option[i].attr) {  // 如果正确
 				data.option[i].itemClass = 'item-right';
 			}
 			if (data.option[i].isSelected && !data.option[i].attr) {  // 如果错误
 				data.option[i].itemClass = 'item-wrong';
+        isError=1;
 			}
 		}
-		console.log('data', data)
+    if (isError==0){
+      var n = parseInt(_this.data.sore) + parseInt(data.sore);
+      _this.setData({ sore: n });
+    }else{
+      //提交后台记录错题
+      wx.request({
+        url: config.route + api.addErroe,
+        data: {
+          user_id: app.globalData.user_id,
+          tid: data.id,
+          content: data.option,
+          types:2,
+          token: config.token
+        },
+        success: function (res) {
+
+        }
+      });
+    }
 		_this.nextQuestion(data);
 	},
 
@@ -137,9 +146,22 @@ Page({
 		var _this = this;
 		var currentIndex = _this.data.currentIndex + 1;
 		_this.setData({ showData: data })
-		
 		// 完成答题
 		if (currentIndex >= _this.data.initData.length) {
+      //提交后台，保存积分
+   
+      wx.request({
+        url: config.route + api.addSore,
+        data: {
+          user_id: app.globalData.user_id,
+          sore: _this.data.sore,
+          type_id: _this.data.type_id,
+          token: config.token
+        },
+        success: function (res) {
+          
+        }
+      });
 			clearInterval(_this.data.timeInterval);
 			setTimeout(() => {
 				_this.setData({ isShowPopup: true })
@@ -158,10 +180,13 @@ Page({
 	// 回到首页
 	toIndexPage: function() {
 		var _this = this;
-		_this.setData({ isShowPopup: false })
-		wx.navigateTo({
-	      url: path.indexPage
-	    })
+		_this.setData({ isShowPopup: false });
+    wx.navigateBack({
+      delta: 4
+    })
+		// wx.navigateTo({
+	  //     url: path.indexPage
+	  //   })
 	},
 
 	// 时间倒计时
@@ -182,30 +207,5 @@ Page({
 			_this.setData({ time: _this.data.time-1 })
 		}, 1000)
 		_this.setData({ timeInterval: timeInterval })
-	}
-
-
-	// 显示相应的题库
-	// showTypeExam: function(type) {
-	// 	var barTitle;
-	// 	switch (type) {
-	// 		case '0':
-	// 			barTitle = '单项选择题';
-	// 			break;
-	// 		case '1':
-	// 			barTitle = '多项选择题';
-	// 			break;
-	// 		case '2':
-	// 			barTitle = '判断题';
-	// 			break;
-	// 		default:
-	// 			barTitle = ' ';
-	// 			break;
-	// 	};
-	// 	wx.setNavigationBarTitle({
-	// 	  title: barTitle
-	// 	})
-	// },
-
-
+	},
 })

@@ -9,7 +9,7 @@
       <image class="hd-logo" src="../../assets/h-logo.png"></image>
       <view class="hd-info">
         <view class="name">{{userInfo.nickName}}</view>
-        <view class="integral"><image src="../../assets/i-integral.png"></image>930</view>
+        <view class="integral"><image src="../../assets/i-integral.png"></image>{{sore}}</view>
       </view>
     </view>
   </view>
