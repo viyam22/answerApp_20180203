@@ -16,6 +16,30 @@ Page({
    * areas当前被选中的区
    */
   data: {
+    initData: {
+      departmentArray: ['供电局1', '供电局2'],   // 所属供电局的值
+      myGift: [{
+        name: '小米闹钟音响',   // 我的奖品
+        needIntegral: 500,    // 需要积分
+        imgUrl: ''   // 奖品图片链接
+      },{
+        name: '小米闹钟音响',   // 我的奖品
+        needIntegral: 500,    // 需要积分
+        imgUrl: ''   // 奖品图片链接
+      },{
+        name: '小米闹钟音响',   // 我的奖品
+        needIntegral: 500,    // 需要积分
+        imgUrl: ''   // 奖品图片链接
+      },{
+        name: '小米闹钟音响',   // 我的奖品
+        needIntegral: 500,    // 需要积分
+        imgUrl: ''   // 奖品图片链接
+      },{
+        name: '小米闹钟音响',   // 我的奖品
+        needIntegral: 500,    // 需要积分
+        imgUrl: ''   // 奖品图片链接
+      },]
+    },
   	// 礼品
     prizeImg:'',
     prizeName: '',
@@ -23,10 +47,15 @@ Page({
   	hasIntegral:567,
   	exchangeBtnClass: 'ban-btn',
 
+
   	// 填写信息
-  	isShowPopup: false,
+  	isShowPopup: false,  // 是否显示填写信息弹窗
+    isShowNoneGiftPopup: false,  // 是否显示没有奖品弹窗
+    isShowGiftPopup: false,   // 是否显示我的奖品弹窗
   	areaInfoColor: 'rgba(255, 255, 255, 0.5)',  // 省市区选择框文字颜色
   	areaName: '省 市 区',
+    departmentIndex: null,  // 选择所属供电局的下标
+    //departmentArray: ['供电局1', '供电局2'],   // 所属供电局的值
     inputP: '',   // 省
     inputC: '',   // 市
     inputA: '',   // 区
@@ -63,6 +92,7 @@ Page({
         token: config.token
       },
       success: function (res) {
+        console.log('gift',res)
         wx.hideLoading();
         _this.setData({
           prizeImg: res.data.img,
@@ -173,6 +203,9 @@ Page({
     } else if (!postData.address) {
       _this.showToast('请输入具体的街道地址');
       return;
+    } else if (!departmentIndex) {
+      _this.showToast('请选择所属供电局');
+      return;
     }
 
     wx.showLoading({
@@ -185,7 +218,8 @@ Page({
       data: {
         user_info: postData,
         user_id: app.globalData.user_id,
-        token: config.token
+        token: config.token,
+        // 供电局data: _this.data.initData.departmentArray[departmentIndex]
       },
       complete:function(){
         wx.hideLoading();
@@ -214,6 +248,30 @@ Page({
         })
       }
     })
+  },
+
+  // 供电局选择
+  departmentChange: function(e) {
+    this.setData({
+      departmentIndex: e.detail.value
+    })
+  },
+
+  // 关闭弹窗
+  closePopup: function() {
+    this.setData({ 
+      isShowNoneGiftPopup: false,
+      isShowGiftPopup: false
+    })
+  },
+
+  // 显示我的奖品
+  showGift: function() {
+    if (this.data.initData.myGift.length > 0) {
+      this.setData({ isShowGiftPopup: true })
+    } else {
+      this.setData({ isShowNoneGiftPopup: true })
+    }
   },
 
 
