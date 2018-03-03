@@ -1,8 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/question/question",
     "pages/gift/gift",
+    "pages/question/question",
     "pages/wrong/wrong",
     "pages/topic-list/topic-list",
     "pages/topic/topic",
