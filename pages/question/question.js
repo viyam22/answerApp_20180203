@@ -15,6 +15,8 @@ Page({
 		isShowPopup: false,    // 是否显示答题完成弹窗
     type_id:0,//题型ID
     sore:0,//积分
+    numbe:0,
+    start:1
 	},
 
 	onLoad: function(options) {
@@ -32,7 +34,8 @@ Page({
       },
       success: function (res) {
         _this.setData({
-          initData: res.data
+          initData: res.data.data,
+          start: res.data.start
         });
         _this.initData();
         _this.countDownTime();
@@ -77,6 +80,7 @@ Page({
       //增加积分
       var n = parseInt(_this.data.sore) + parseInt(data.sore);
       _this.setData({ sore: n });
+      _this.numadd();
       _this.nextQuestion(data);
       return false;
 		}else{
@@ -122,6 +126,7 @@ Page({
     if (isError==0){
       var n = parseInt(_this.data.sore) + parseInt(data.sore);
       _this.setData({ sore: n });
+      _this.numadd();
     }else{
       //提交后台记录错题
       wx.request({
@@ -149,7 +154,6 @@ Page({
 		// 完成答题
 		if (currentIndex >= _this.data.initData.length) {
       //提交后台，保存积分
-   
       wx.request({
         url: config.route + api.addSore,
         data: {
@@ -176,7 +180,15 @@ Page({
 			})
 		}, config.nextQuestionTime)
 	},
+  //增加答对数
+  numadd: function () {
+    var _this = this;
+    _this.data.numbe++;
 
+    _this.setData({
+      numbe: _this.data.numbe,
+    })
+  },
 	// 回到首页
 	toIndexPage: function() {
 		var _this = this;

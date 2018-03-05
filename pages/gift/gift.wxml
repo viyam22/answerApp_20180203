@@ -68,7 +68,7 @@
         <view class="box-name">我的奖品</view>
         <scroll-view class="gift-lists" scroll-y="true">
           <view class="gift-item" wx:for="{{initData.myGift}}" wx:key="{{item.name}}">
-            <image src="{{initData.imgUrl}}" class="item-img"></image>
+            <image src="{{item.imgUrl}}" class="item-img"></image>
             <view class="item-txt">
               <view class="txt-name">{{item.name}}</view>
               <view class="txt-tip">兑换积分：{{item.needIntegral}}</view>

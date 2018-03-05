@@ -21,8 +21,15 @@
         <view class="box-name">答题结束</view>
         <view class="info-container">
         	<image class="i-gold" src="../../assets/i-gold.png"></image>
-        	<view class="content">恭喜你获得{{sore}}积分</view>
-        	<view class="tip">积分可兑换奖品</view>
+          <block view wx:if="{{start == 1}}">
+ 	           <view class="content">恭喜你获得{{sore}}积分</view>
+        	   <view class="tip">积分可兑换奖品</view>
+          </block>
+          <block wx:else>
+             <view class="content">恭喜你答对了{{numbe}}道题</view>
+             <view class="tip">非活动期间，不能获得积分</view>
+          </block>
+
           <view class="ok-btn btn" bindtap="toIndexPage">确定</view>
         </view>
       </view>

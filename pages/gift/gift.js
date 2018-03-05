@@ -17,28 +17,8 @@ Page({
    */
   data: {
     initData: {
-      departmentArray: ['供电局1', '供电局2'],   // 所属供电局的值
-      myGift: [{
-        name: '小米闹钟音响',   // 我的奖品
-        needIntegral: 500,    // 需要积分
-        imgUrl: ''   // 奖品图片链接
-      },{
-        name: '小米闹钟音响',   // 我的奖品
-        needIntegral: 500,    // 需要积分
-        imgUrl: ''   // 奖品图片链接
-      },{
-        name: '小米闹钟音响',   // 我的奖品
-        needIntegral: 500,    // 需要积分
-        imgUrl: ''   // 奖品图片链接
-      },{
-        name: '小米闹钟音响',   // 我的奖品
-        needIntegral: 500,    // 需要积分
-        imgUrl: ''   // 奖品图片链接
-      },{
-        name: '小米闹钟音响',   // 我的奖品
-        needIntegral: 500,    // 需要积分
-        imgUrl: ''   // 奖品图片链接
-      },]
+      departmentArray: [],   // 所属供电局的值
+      myGift: []
     },
   	// 礼品
     prizeImg:'',
@@ -95,10 +75,13 @@ Page({
         console.log('gift',res)
         wx.hideLoading();
         _this.setData({
-          prizeImg: res.data.img,
-          prizeName: res.data.title,
-          needIntegral: res.data.integral,
-          hasIntegral: app.globalData.sore
+          prizeImg: res.data.imgUrl,
+          prizeName: res.data.name,
+          needIntegral: res.data.needIntegral,
+          hasIntegral: app.globalData.sore,
+          initData:{
+            departmentArray: res.data.gdj
+          }
         })
       }
     });
@@ -145,8 +128,7 @@ Page({
 	showPopup: function() {
 		var _this = this;
 
-    _this.setData({ isShowPopup: true });
-    return false;
+ 
     if (_this.data.hasIntegral < _this.data.needIntegral) return;
     //点击兑换 请求后台记录
     //查看是否填写信息
@@ -183,14 +165,16 @@ Page({
     var _this = this;
 
     if (!_this.data.isCanSubmit) return;
-
+    var departmentIndex=_this.data.departmentIndex;  
+   
     var postData = {
       name: _this.data.inputName.replace(/\s/g,""),
       phone: _this.data.inputPhone.replace(/\s/g,""),
       address: _this.data.inputAddress,
       prov: _this.data.inputP,
       country: _this.data.inputC,
-      area: _this.data.inputA
+      area: _this.data.inputA,
+      from2: _this.data.initData.departmentArray[departmentIndex]
     }
 
     var title;
@@ -267,11 +251,28 @@ Page({
 
   // 显示我的奖品
   showGift: function() {
-    if (this.data.initData.myGift.length > 0) {
-      this.setData({ isShowGiftPopup: true })
-    } else {
-      this.setData({ isShowNoneGiftPopup: true })
-    }
+    var _this = this;
+    wx.request({
+      url: config.route + api.myGift,
+      data: {
+        user_id: app.globalData.user_id,
+        token: config.token
+      },
+      success: function (res) {
+        _this.setData({ 
+          initData:{
+            myGift: res.data.result
+          }
+        });
+      
+        if (_this.data.initData.myGift.length > 0) {
+          _this.setData({ isShowGiftPopup: true })
+        } else {
+          _this.setData({ isShowNoneGiftPopup: true })
+        }
+      }
+    });
+   
   },
 
 

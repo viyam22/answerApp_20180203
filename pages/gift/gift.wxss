@@ -10,7 +10,7 @@
 	position: absolute;
 	top: 18rpx;
 	border-radius: 32rpx;
-	z-index: -1;
+	/* z-index: -1; */
 	background-color: #fff;
 }
 .gift-img {
@@ -18,7 +18,7 @@
 	top: 120rpx;
 	width: 602rpx;
 	height: 509rpx;
-	z-index: -1;
+	/* z-index: -1; */
 	border-radius: 32rpx;
 }
 .exchange-btn {
