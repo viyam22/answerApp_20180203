@@ -7,10 +7,13 @@
 		<view class="title">{{showData.title}}</view>
 	</view>
 	<view class="question-list">
-		<view class="item {{showData.option[0].itemClass}}" data-option="0" data-tid="{{showData.id}}" wx:if="{{showData.option.length > 0}}" bindtap="selectAnswer">{{showData.option[0].text}}</view>
-		<view class="item {{showData.option[1].itemClass}}" data-option="1" data-tid="{{showData.id}}" wx:if="{{showData.option.length > 1}}" bindtap="selectAnswer">{{showData.option[1].text}}</view>
-		<view class="item {{showData.option[2].itemClass}}" data-option="2" data-tid="{{showData.id}}" wx:if="{{showData.option.length > 2}}" bindtap="selectAnswer">{{showData.option[2].text}}</view>
-		<view class="item {{showData.option[3].itemClass}}" data-option="3" data-tid="{{showData.id}}" wx:if="{{showData.option.length > 3}}" bindtap="selectAnswer">{{showData.option[3].text}}</view>
+		<view class="item {{showData.option[0].itemClass}}" wx:if="{{showData.option.length > 0}}"><view  data-option="0" data-tid="{{showData.id}}" bindtap="selectAnswer">{{showData.option[0].text}}</view></view>
+
+		<view class="item {{showData.option[1].itemClass}}" wx:if="{{showData.option.length > 1}}"><view data-option="1" data-tid="{{showData.id}}" bindtap="selectAnswer">{{showData.option[1].text}}</view></view>
+
+		<view class="item {{showData.option[2].itemClass}}" wx:if="{{showData.option.length > 2}}"><view data-option="2" data-tid="{{showData.id}}" bindtap="selectAnswer">{{showData.option[2].text}}</view></view>
+
+		<view class="item {{showData.option[3].itemClass}}" wx:if="{{showData.option.length > 3}}"><view data-option="3" data-tid="{{showData.id}}" bindtap="selectAnswer">{{showData.option[3].text}}</view></view>
 
 		<view class="btn ok-btn" wx:if="{{showData.type === 1}}" data-tid="{{showData.id}}" bindtap="selectMul">确定</view>
 	</view>

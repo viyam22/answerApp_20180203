@@ -3,6 +3,7 @@
 
 .gift-border {
 	background-color: #3483e9;
+	z-index: 1!important;
 }
 .box-container {
 	width: 602rpx;
@@ -10,7 +11,6 @@
 	position: absolute;
 	top: 18rpx;
 	border-radius: 32rpx;
-	/* z-index: -1; */
 	background-color: #fff;
 }
 .gift-img {
@@ -18,18 +18,19 @@
 	top: 120rpx;
 	width: 602rpx;
 	height: 509rpx;
-	/* z-index: -1; */
 	border-radius: 32rpx;
 }
 .exchange-btn {
 	position: absolute;
 	top: 900rpx;
 	left: 118rpx;
+	z-index: 2;
 }
 .my-gift-btn {
 	position: absolute;
 	top: 900rpx;
 	right: 118rpx;
+	z-index: 2;
 }
 .gift-info {
 	/*margin: 626rpx auto 0;*/

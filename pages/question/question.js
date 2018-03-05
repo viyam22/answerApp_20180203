@@ -57,6 +57,7 @@ Page({
 			showData: initData[_this.data.currentIndex], 
 			initData: initData
 		})
+		console.log(_this.data.showData)
 	},
 
 	// 选择答案
