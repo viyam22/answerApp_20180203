@@ -14,7 +14,13 @@
     </view>
   </view>
   <view class="bd">
-    <image class="banner-ex" src="../../assets/b-exercise.png" bindtap="toTopicPage"></image>
+    <form report-submit bindsubmit='orderSign'>
+      <view class="item_top">
+             <image class="banner-ex" src="../../assets/b-exercise.png" bindtap="toTopicPage"></image>
+                     <button class="report" form-type="submit">submit</button> 
+      </view>
+ 
+   </form>
     <image class="banner-desc" src="../../assets/b-des.png" bindtap="toDescPage"></image>
     <image class="banner-gift" src="../../assets/b-gift.png" bindtap="toGiftPage"></image>
     <image class="banner-wrong" src="../../assets/b-wrong.png" bindtap="toWrongPage"></image>

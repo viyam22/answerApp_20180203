@@ -90,7 +90,8 @@ Page({
         url: config.route + api.addErroe,
         data: {
           user_id: app.globalData.user_id,
-          tid: data.id,
+          key: data.id,
+          tid: data.test_id,
           content: data.option[index],
           token: config.token
         },
@@ -134,7 +135,8 @@ Page({
         url: config.route + api.addErroe,
         data: {
           user_id: app.globalData.user_id,
-          tid: data.id,
+          key: data.id,
+          tid: data.test_id,
           content: data.option,
           types:2,
           token: config.token

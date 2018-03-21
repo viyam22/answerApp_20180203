@@ -1,5 +1,5 @@
 .hd {
-	height: 470rpx;
+	min-height: 470rpx;
 	width: 100%;
 }
 .hd > .label {
@@ -49,7 +49,7 @@
 	box-shadow: 0rpx 6rpx 0rpx 0.08rpx rgba(70, 135, 217, 0.6);
 	position: relative;
 } 
-.question-list > .item > view {
+.question-list > .item view {
 	width: 100%;
 	padding: 0 72rpx;
 	box-sizing: border-box;

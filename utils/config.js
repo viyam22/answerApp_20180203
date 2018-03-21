@@ -25,7 +25,8 @@ const api = {
   wrongTest: 'index/Index/wrongTest',//错题套数
   delErroe: 'index/Index/delErroe',//删除错题
   record: 'index/Index/record',//删除错题
-  myGift:'index/Index/myGift',
+  myGift: 'index/Index/myGift', 
+  formId: 'index/Index/putFormId' //去提交一下 formId 
 }
 
 const path = {
