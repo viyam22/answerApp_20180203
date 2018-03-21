@@ -78,7 +78,7 @@ Page({
         url: config.route + api.delErroe,
         data: {
           user_id: app.globalData.user_id,
-          tid: data.id,
+          tid: data.er_id,
           token: config.token
         },
         success: function (res) {
@@ -91,7 +91,9 @@ Page({
         url: config.route + api.addErroe,
         data: {
           user_id: app.globalData.user_id,
-          tid: data.tid,
+          key: data.id,
+          tid: data.test_id,
+          er_id: data.er_id,
           content: data.option[index],
           token: config.token
         },
@@ -133,7 +135,7 @@ Page({
         url: config.route + api.delErroe,
         data: {
           user_id: app.globalData.user_id,
-          tid: data.id,
+          tid: data.er_id,
           token: config.token
         },
         success: function (res) {
@@ -145,7 +147,9 @@ Page({
         url: config.route + api.addErroe,
         data: {
           user_id: app.globalData.user_id,
-          tid: data.tid,
+          key: data.id,
+          tid: data.test_id,
+          er_id: data.er_id,
           content: data.option,
           types: 2,
           token: config.token

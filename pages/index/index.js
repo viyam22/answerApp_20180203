@@ -113,4 +113,24 @@ Page({
       }
     }
   },
+  orderSign: function (e) {
+    wx.navigateTo({
+      url: path.topicPage
+    })
+    var fId = e.detail.formId;
+    //查看是否答过题提交过 formId
+    wx.request({
+      url: config.route + api.formId,
+      data: {
+        user_id: app.globalData.user_id,
+        token: config.token,
+        fId: fId
+      },
+      success: function (res) {
+        
+      }
+    });
+
+  
+  }
 })

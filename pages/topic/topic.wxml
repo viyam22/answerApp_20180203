@@ -5,10 +5,11 @@
 	<view class="container">
 		<image class="banner-title" src="../../assets/topic-title.png"></image>
 
-    <view wx:for="{{types}}" wx:key="{{xxx}}">
-		<image class="banner-item" src="{{item.img}}" bindtap="toTopicListPage" data-id="{{item.id}}" data-title="{{item.type_name}}">
-		</image>
-    </view>
+      <view wx:for="{{types}}" wx:key="{{xxx}}" class="item_top">
+		    <image class="banner-item" src="{{item.img}}" bindtap="toTopicListPage" data-id="{{item.id}}" data-title="{{item.type_name}}">
+		    </image>
+
+      </view>
 
 	</view>
 </view>

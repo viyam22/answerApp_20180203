@@ -17,7 +17,7 @@
 				<view class="content" bindtap="toQuestionPage" data-type="{{type_id}}" data-number="{{item.id}}">
 					<view class="topic-num">{{item.title}}</view>
 					<view class="topic-desc">{{item.short}} | 难度
-						<image wx:for="{{item.start}}" class="i-star" src="../../assets/i-star.png" ></image>
+						<image wx:for="{{item.start}}" wx:key="*this" class="i-star" src="../../assets/i-star.png" ></image>
 					</view>
 				</view>
 			</view>
