@@ -43,14 +43,22 @@
 .question-list > .item {
 	width: 604rpx;
 	height: 105rpx;
-	line-height: 105rpx;
 	margin: 0 auto 30rpx;
 	border-radius: 18rpx;
-	text-align: center;
 	font-size: 30rpx;
 	box-shadow: 0rpx 6rpx 0rpx 0.08rpx rgba(70, 135, 217, 0.6);
-
+	position: relative;
 } 
+.question-list > .item > view {
+	width: 100%;
+	padding: 0 72rpx;
+	box-sizing: border-box;
+	text-align: center;
+	font-size: 30rpx;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
 .item-default {
 	color: #666;
 	background-color: #fff;
