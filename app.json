@@ -1,7 +1,8 @@
 {
   "pages":[
-    "pages/rank/rank",
     "pages/review-list/review-list",
+    "pages/rank/rank",
+    
     "pages/review/review",
     "pages/topic-list/topic-list",
     "pages/gift/gift",

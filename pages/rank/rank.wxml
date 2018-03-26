@@ -9,13 +9,33 @@
 		</view>
 
 		<view class="banner-list">
+			<!-- 列表开始 -->
 			<view class="banner-item">
 				<view class="content">
-					<image src="../../assets/i-review.png" />
-          <view class="txt">
-            <view class="title">在Word 2003中，设定打印纸张大小时，应当使用的命...</view>
+					<image class="rank-box" src="../../assets/rank-box.png" />
+					<!-- <image class="rank-icon" src="../../assets/i-no1.png" /> -->
+					<text class="rank-txt">4</text>
+					<image class="avatar" src="../../assets/b-wrong.png"  />
+					<text class="nike-name">王文杰</text>
+          <view class="integral">
+          	<image src="../../assets/i-integral.png" />
+          	<text>3930</text>
           </view>
-					<view class="i-like"><image src="../../assets/i-like.png" />465</view>
+				</view>
+			</view>
+			<!-- 列表结束 -->
+
+			<view class="banner-item">
+				<view class="content">
+					<image class="rank-box" src="../../assets/rank-box.png" />
+					<!-- <image class="rank-icon" src="../../assets/i-no1.png" /> -->
+					<text class="rank-txt">4</text>
+					<image class="avatar" src="../../assets/b-wrong.png"  />
+					<text class="nike-name">王文杰</text>
+          <view class="integral">
+          	<image src="../../assets/i-integral.png" />
+          	<text>3930</text>
+          </view>
 				</view>
 			</view>
 		</view>
