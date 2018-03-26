@@ -16,7 +16,7 @@ Page({
     type_id:0,//题型ID
     sore:0,//积分
     numbe:0,
-    start:1
+		start:1,
 	},
 
 	onLoad: function(options) {
@@ -223,4 +223,12 @@ Page({
 		}, 1000)
 		_this.setData({ timeInterval: timeInterval })
 	},
+	
+	likeFun: function() {
+		if (this.data.showData.islike) {
+			// 点赞接口
+		} else {
+			// 取消点赞接口
+		}
+	}
 })

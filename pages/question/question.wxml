@@ -4,6 +4,13 @@
 	<view class="hd">
 		<text class="label">{{showData.label}}</text>
 		<view class="time {{isLessTime ? 'time-danger' : ''}}">{{time}}<text class="time-small">s</text></view>
+		<!-- @likeFun: 是否点赞函数 -->
+		<view class="like" bindtap="likeFun">
+			<!-- @islike: 是否点赞的参数 -->
+			<image src="../../assets/i-{{showData.islike ? 'liked' : 'like'}}.png" />
+			<text class="{{showData.islike ? 'txt-liked' : ''}}">2.3w</text>
+			<view>喜欢题目请点赞</view>
+		</view>
 		<view class="title">{{showData.title}}</view>
 	</view>
 	<view class="question-list">

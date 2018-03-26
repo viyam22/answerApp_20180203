@@ -1,75 +1,55 @@
 @import "../../templates/selectarea/selectarea.wxss";
 
-.gift-info-lists {
-  margin-top: 66rpx;
-}
-.gift-border {
-	background-color: #3483e9;
-  z-index: 1!important;
-  width: 640rpx!important;
-  height: 374rpx!important;
-  margin: 0 auto 18rpx;
 
-}
-.gift-container {
-  width: 601rpx!important;
-  height: 335rpx!important;
+.upload-border {
+	background-color: #3483e9;
+	z-index: 1!important;
+	margin-top: 26rpx!important;
 }
 .box-container {
 	width: 602rpx;
 	height: 906rpx;
-	position: absolute;
+	position: relative;
 	top: 18rpx;
 	border-radius: 32rpx;
 	background-color: #fff;
 }
 .gift-img {
 	position: absolute;
-	width: 280rpx;
-	height: 335rpx;
+	top: 120rpx;
+	width: 602rpx;
+	height: 509rpx;
 	border-radius: 32rpx;
 }
 .exchange-btn {
-	margin-top: 20rpx;
+	position: absolute;
+	top: 900rpx;
+	left: 118rpx;
 	z-index: 2;
 }
 .my-gift-btn {
-	position: relative;
-  top: 40rpx;
-  margin-bottom: 50rpx;
-  left: 50%;
-  transform: translateX(-50%);
+	position: absolute;
+	top: 900rpx;
+	right: 118rpx;
 	z-index: 2;
 }
-.gift-info-item {
-  position: relative;
-}
 .gift-info {
+	/*margin: 626rpx auto 0;*/
 	font-size: 30rpx;
 	line-height: 50rpx;
-	color: #666;
+	color: #333;
 	box-sizing: border-box;
 	display: inline-block;
-	position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 328rpx;
-}
-.gift-name {
-  font-size: 40rpx;
-  color: #333;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 498rpx;
 }
 .integral-item {
 	position: relative;
 }
 .integral-item text {
 	margin-left: 50rpx;
-}
-.my-integral {
-  color: #fff;
-  left: 220rpx;
-  top: 26rpx;
 }
 .i-integral {
 	width: 44rpx;
@@ -96,13 +76,15 @@
 	background-color: #3f8cf4;
 	color: #fff;
 	font-size: 26rpx;
-	padding: 0 20rpx 0 146rpx;
+	padding: 0 20rpx;
 	box-sizing: border-box;
 }
-.input-text {
+.textarea-tip {
   font-size: 26rpx;
-  line-height: 76rpx;
-	color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 350rpx;
+  left: 50rpx;
 }
 .info-container {
 	width: 100%;
@@ -110,12 +92,10 @@
 	box-sizing: border-box;
 }
 .info-container .attr {
-  position: absolute;
-  text-align: right;
-  width: 134rpx;
-	color: #fff;
-  font-size: 26rpx;
-  z-index: 1;
+	margin-left: 20rpx;
+	color: #666;
+	font-size: 26rpx;
+	line-height: 48rpx;
 }
 .select-district {
 	width: 544rpx;
@@ -125,7 +105,7 @@
 	background-color: #3f8cf4;
 	color: rgba(255, 255, 255, 0.5);
 	font-size: 26rpx;
-	padding: 0 20rpx 0 146rpx;
+	padding: 0 20rpx;
 	box-sizing: border-box;
   position: relative;
 }
@@ -143,23 +123,23 @@
 }
 .textarea-box {
   width: 544rpx;
-  height: 163rpx;
-  padding: 25rpx 20rpx 0 146rpx;
+  height: 546rpx;
+  padding: 18rpx 20rpx;
   box-sizing: border-box;
-  line-height: 76rpx;
+  line-height: 36rpx;
   border-radius: 10rpx;
   background-color: #3f8cf4;
   color: #fff;
   font-size: 26rpx;
   margin-top: 18rpx;
-}
+} 
 .tip {
   font-size: 22rpx;
   color: #666;
   display: block;
 }
-.ok-btn {
-  margin: 8rpx auto 0;
+.upload-btn {
+  margin: 100rpx auto 0;
 }
 
 
@@ -204,19 +184,21 @@
 	height: 751rpx!important;
 }
 .i-none-gift {
-	width: 440rpx;
-	height: 264rpx;
+	width: 246rpx;
+	height: 291rpx;
 	display: block;
-	margin: 75rpx auto 0;
+	margin: 38rpx auto 0;
 }
 .none-gift-tip {
-	color: #333;
-	font-size: 36rpx;
+  width: 100%;
+	color: #999;
+	font-size: 30rpx;
 	text-align: center;
-	margin-top: 40rpx;
+  margin-top: 40rpx;
+  display: block;
 }
 .none-gift-btn {
-	margin: 66rpx auto 0;
+	margin: 40rpx auto 0;
 
 }
 .gift-lists {
@@ -258,43 +240,17 @@
 .gift-btn {
 	margin: 40rpx auto 0;
 }
-.gift-title {
-  position: relative;
-  width: 363rpx;
-  height: 100rpx;
-  top: 28rpx;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.info-item {
-  position: relative;
-  line-height:76rpx;
-  margin-bottom: 20rpx;
-}
-.rule {
-  line-height: 32rpx;
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
-}
-.rule-point {
-  width: 10rpx;
-  height: 10rpx;
-  top: 16rpx;
-  /* margin-right: 10rpx; */
-  background-color: #526aca;
-  border-radius: 50%;
-  float: left;
-  left: 0;
+.i-right {
+  width: 14rpx;
+  height: 24rpx;
   position: absolute;
+  top: 197rpx;
+  left: 538rpx;
+  z-index: 1;
 }
-.rule .rule-txt {
-  font-size: 22rpx;
-  color: #666;
-}
-.rule > view {
-  padding-left: 20rpx;
-  position: relative;
-}
+
+
+
 
 
 
