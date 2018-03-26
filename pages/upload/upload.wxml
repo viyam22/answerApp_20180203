@@ -8,7 +8,6 @@
       <view wx:for="{{types}}" wx:key="{{xxx}}" class="item_top">
 		    <image class="banner-item" src="{{item.img}}" bindtap="toTopicListPage" data-id="{{item.id}}" data-title="{{item.type_name}}">
 		    </image>
-
       </view>
 
 	</view>

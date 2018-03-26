@@ -7,14 +7,14 @@
         <view class="info-container">
           <text class="attr">请选择题目类型</text>
           <image class="i-right" src="../../assets/i-left.png"  />          
-          <picker class="select-district" bindchange="departmentChange" value="{{departmentIndex}}" range="{{initData.departmentArray}}">
+          <picker class="select-district" bindchange="typeChange" value="{{typeIndex}}" range="{{initData.type}}">
             <view class="department-picker">
-              {{departmentIndex ? '' : '点击下拉菜单选择题目类型'}}{{initData.departmentArray[departmentIndex]}}
+              {{typeIndex ? '' : '点击下拉菜单选择题目类型'}}{{initData.type[typeIndex]}}
             </view>
           </picker>
           <text class="attr">题目内容</text>
-          <textarea class="textarea-box" bindfocus="hiddenTip" bindblur="showTip" bindinput="getInputVal" data-type="address"></textarea>
-          <text class="textarea-tip">题目输入格式参考：\n题目（例：WPS是哪家公司开发的软件？）\n+选项（例：微软，苹果，金山）\n+答案（例：金山）</text>
+          <textarea class="textarea-box" bindinput="getInputVal" data-type="content"></textarea>
+          <text class="textarea-tip" wx:if="{{!inputContent.length > 0}}">题目输入格式参考：\n题目（例：WPS是哪家公司开发的软件？）\n+选项（例：微软，苹果，金山）\n+答案（例：金山）</text>
           <view class="upload-btn btn" bindtap="sendInfo">提交</view>
         </view>
     </view>
