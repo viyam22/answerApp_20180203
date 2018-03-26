@@ -1,7 +1,7 @@
 /**index.wxss**/
 .home {
 	width: 100%;
-	height: 100%;
+  height: 100%;
 }
 .hd {
 	height: 444rpx;
@@ -79,35 +79,56 @@
 .bd {
 	margin-top: 70rpx;
 	position: relative;
-	height: 672rpx;
+	height: 829rpx;
 }
 .banner-ex {
 	position: absolute;
-	top: 0;
+	top: 14rpx;
 	left: 35rpx;
 	width: 330rpx;
-	height: 422rpx;
+	height: 310rpx;
 }
 .banner-desc {
 	position: absolute;
-	top: 0;
+	top: 613rpx;
 	right: 35rpx;
 	width: 330rpx;
-	height: 314rpx;
+	height: 187rpx;
 }
 .banner-gift {
 	position: absolute;
-	top: 441rpx;
+	top: 556rpx;
 	left: 35rpx;
 	width: 330rpx;
-	height: 208rpx;
+	height: 246rpx;
 }
 .banner-wrong {
 	position: absolute;
-	top: 334rpx;
+	top: 414rpx;
 	right: 35rpx;
 	width: 330rpx;
-	height: 314rpx;
+	height: 186rpx;
+}
+.banner-review {
+  position: absolute;
+	top: 215rpx;
+	right: 35rpx;
+	width: 330rpx;
+	height: 186rpx;
+}
+.banner-upload {
+  position: absolute;
+	top: 14rpx;
+	right: 35rpx;
+	width: 330rpx;
+	height: 187rpx;
+}
+.banner-rank {
+  position: absolute;
+	top: 335rpx;
+	left: 35rpx;
+	width: 330rpx;
+	height: 216rpx;
 }
 .item_top{
   position: relative;
@@ -121,8 +142,57 @@
   left: 0;
   opacity:0;
 }
-
-
+.signin {
+  width: 680rpx;
+  height: 220rpx;
+  border-radius: 8rpx;
+  position: relative;
+  top: 64rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4762ce;
+  color: #fff;
+  padding: 21rpx 35rpx 0 35rpx;
+  box-sizing: border-box;
+}
+.signin > .title {
+  font-size: 26rpx;
+}
+.signin > .sub-title {
+  font-size: 20rpx;
+  color: rgba(225, 225, 225, 0.5);
+}
+.signin > .tip {
+  width: 158rpx;
+  height: 48rpx;
+  font-size: 24rpx;
+  line-height: 48rpx;
+  border-radius: 24rpx;
+  background-color: #ff4c33;
+  position: absolute;
+  top: 21rpx;
+  right: 26rpx;
+  text-align: center;
+}
+.signin > .lists {
+  width: 100%;
+  font-size: 20rpx;
+  text-align: center;
+  margin-top: 15rpx;
+}
+.signin .item {
+  width: 14.28%;
+  float: left;
+}
+.signin .item > image {
+  width: 63rpx;
+  height: 60rpx;
+  display: block;
+  margin: 13rpx auto 0;
+}
+.signin .item > .date-signin {
+  color: #fff100;
+}
 
 
 

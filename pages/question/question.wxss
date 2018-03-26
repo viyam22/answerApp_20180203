@@ -135,3 +135,24 @@
 	color: #999;
 	text-align: center;
 }
+.like {
+  color: #fff;
+  position: absolute;
+  top: 140rpx;
+  left: 554rpx;
+}
+.like > image {
+  width: 50rpx;
+  height: 52rpx;
+  margin-right: 18rpx;
+}
+.like > text {
+  font-size: 24rpx;
+}
+.like > .txt-liked {
+  color: #fff100;
+}
+.like > view {
+  font-size: 20rpx;
+}
+
