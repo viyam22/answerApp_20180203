@@ -60,8 +60,8 @@
     <image class="banner-desc" src="../../assets/b-des.png" bindtap="toDescPage"></image>
     <image class="banner-gift" src="../../assets/b-gift.png" bindtap="toGiftPage"></image>
     <image class="banner-wrong" src="../../assets/b-wrong.png" bindtap="toWrongPage"></image>
-    <image class="banner-upload" src="../../assets/b-upload.png" bindtap="toWrongPage"></image>
-    <image class="banner-review" src="../../assets/b-review.png" bindtap="toWrongPage"></image>
-    <image class="banner-rank" src="../../assets/b-rank.png" bindtap="toWrongPage"></image>      
+    <image class="banner-upload" src="../../assets/b-upload.png" bindtap="toUploadPage"></image>
+    <image class="banner-review" src="../../assets/b-review.png" bindtap="toReviewPage"></image>
+    <image class="banner-rank" src="../../assets/b-rank.png" bindtap="toRankPage"></image>      
   </view>
 </view>

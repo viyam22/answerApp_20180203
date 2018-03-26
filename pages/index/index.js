@@ -89,6 +89,27 @@ Page({
     })
   },
 
+  // 跳转页面到上传题库页面
+  toGiftPage: function() {
+    wx.navigateTo({
+      url: path.uploadPage
+    })
+  },
+
+  // 跳转页面到审查页面
+  toGiftPage: function() {
+    wx.navigateTo({
+      url: path.reviewPage
+    })
+  },
+
+  // 跳转页面到排行页面
+  toGiftPage: function() {
+    wx.navigateTo({
+      url: path.rankPage
+    })
+  },
+
   // 跳转页面到我的错题库
   toWrongPage: function() {
     wx.navigateTo({

@@ -40,7 +40,12 @@ const path = {
 	wrongPage: '../wrong/wrong',
 	descPage: '../desc/desc',
   wrongListPage:'../wrong-list/wrong-list',
-  wrongQuestionPage:'../wrong-question/wrong-question'
+  wrongQuestionPage:'../wrong-question/wrong-question',
+  reviewListPage: '../review-list/review-list',
+  rankPage: '../rank/rank',
+  reviewPage: '../review/review',
+  uploadDecPage: '../upload-dec/upload-dec',
+  uploadPage: '../upload/upload',
 }
 
 module.exports = {

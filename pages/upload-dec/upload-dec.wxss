@@ -124,7 +124,7 @@
 .textarea-box {
   width: 544rpx;
   height: 546rpx;
-  padding: 18rpx 20rpx;
+  padding: 28rpx 20rpx;
   box-sizing: border-box;
   line-height: 36rpx;
   border-radius: 10rpx;
