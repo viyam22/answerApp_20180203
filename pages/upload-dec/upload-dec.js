@@ -78,7 +78,6 @@ Page({
     };
   },
 
-
   sendInfo: function() {
     var _this = this;
     // if (!_this.data.isCanSubmit) return;
@@ -162,6 +161,8 @@ Page({
   closePopup: function() {
     this.setData({ 
       isShowPopup: false,
+      inputContent: '',
+      typeIndex: 0
     })
   },  
 

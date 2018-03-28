@@ -19,6 +19,7 @@ Page({
         token: config.token
       },
       success: function (res) {
+        console.log(res.data);
         wx.hideLoading();
         _this.setData({
           initData: res.data
