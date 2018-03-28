@@ -25,7 +25,7 @@
 				<view class="content">
 					<image src="../../assets/i-review.png" />
           <view class="txt">
-            <view class="title">审核通过题目</view>
+            <view class="title">审核中的题目</view>
             <view class="tip">题目已提交请耐心等待</view>
           </view>
 				</view>
