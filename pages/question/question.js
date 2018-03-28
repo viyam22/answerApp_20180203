@@ -28,6 +28,7 @@ Page({
     wx.request({
       url: config.route + api.getTest,
       data: {
+        user_id: app.globalData.user_id,
         type_id: options.type_id,
         number_id: options.number_id,
         token: config.token
@@ -57,7 +58,6 @@ Page({
 			showData: initData[_this.data.currentIndex], 
 			initData: initData
 		})
-		console.log(_this.data.showData)
 	},
 
 	// 选择答案
@@ -225,10 +225,47 @@ Page({
 	},
 	
 	likeFun: function() {
-		if (this.data.showData.islike) {
-			// 点赞接口
+    var _this = this;
+    var data = _this.data.showData;
+		if (data.islike) {
+			// 已点过赞
+      _this.showToast('您已点过赞啦');
 		} else {
-			// 取消点赞接口
+			// 点赞
+      wx.request({
+        url: config.route + api.click,
+        data: {
+          user_id: app.globalData.user_id,
+          tid: data.test_id,
+          key:data.id,
+          token: config.token
+        },
+        success: function (res) {
+          if(res.data.code==1){
+            var currentIndex= _this.data.currentIndex;
+            _this.data.initData[currentIndex].click_num =_this.data.initData[currentIndex].click_num+1;
+            _this.data.initData[currentIndex].islike = true;
+            _this.setData({
+              currentIndex: currentIndex,
+              showData: _this.data.initData[currentIndex]
+            })
+
+            _this.showToast('感谢您的支持');
+          }else{
+            _this.showToast(res.data.msg);
+          }
+        }
+      });
 		}
-	}
+	},
+  showToast(title) {
+    wx.showToast({
+      title: title,
+      icon: 'none',
+      duration: 1500,
+      success: function () {
+        
+      }
+    })
+  },
 })

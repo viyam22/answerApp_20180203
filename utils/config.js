@@ -26,7 +26,14 @@ const api = {
   delErroe: 'index/Index/delErroe',//删除错题
   record: 'index/Index/record',//删除错题
   myGift: 'index/Index/myGift', 
-  formId: 'index/Index/putFormId' //去提交一下 formId 
+  formId: 'index/Index/putFormId', //去提交一下 formId 
+  score_rank: 'index/Rank/score_rank', //积分排行
+  user_test: 'index/Rank/user_test', //上传试题
+  test_score: 'index/Rank/test_score', //上传试题获得的积分
+  my_test_score: 'index/Rank/my_upload', //我的上传试题
+  myTest: 'index/Rank/myTest', //我的上传试题
+  click: 'index/Rank/click', //点赞
+  sign: 'index/Rank/sign', //签到
 }
 
 const path = {
@@ -46,6 +53,7 @@ const path = {
   reviewPage: '../review/review',
   uploadDecPage: '../upload-dec/upload-dec',
   uploadPage: '../upload/upload',
+  uploadListPage: '../upload-list/upload-list',
 }
 
 module.exports = {

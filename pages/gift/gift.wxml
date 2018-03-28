@@ -1,58 +1,31 @@
 <view>
   <image class="bg" src="../../assets/bg1.png"></image>
   <image class="gift-title" src="../../assets/gift-title.png" />
-  <view class="integral-item my-integral">你的积分：<image class="i-integral" src="../../assets/i-integral.png"></image><text>{{hasIntegral}}</text></view>
+  <view class="integral-item my-integral">您的积分：<image class="i-integral" src="../../assets/i-integral.png"></image><text>{{hasIntegral}}</text></view>
   <view class="gift-info-lists">
-    <view class="gift-info-item">
-      <view class="box-border gift-border">
-        <view class="box-container gift-container">
-          <!-- 礼物图片大小280*335 -->
-          <image class="gift-img" src="{{prizeImg}}"></image>
-          <view class= "gift-info">
-            <text class="gift-name">{{prizeName}}</text>
-            <view class="integral-item">需要积分：<image class="i-integral" src="../../assets/i-integral.png"></image><text>{{needIntegral}}</text></view>
-            <view class="{{hasIntegral >= needIntegral ? 'btn' : 'ban-btn'}} exchange-btn" bindtap="showPopup">兑换</view>
-          </view>
-        </view>
-      </view>
-    </view>
 
-    <view class="gift-info-item">
+    <view class="gift-info-item" wx:for="{{prizeArray}}">
       <view class="box-border gift-border">
         <view class="box-container gift-container">
           <!-- 礼物图片大小280*335 -->
-          <image class="gift-img" src="{{prizeImg}}"></image>
+          <image class="gift-img" src="{{item.imgUrl}}"></image>
           <view class= "gift-info">
-            <text class="gift-name">{{prizeName}}</text>
-            <view class="integral-item">需要积分：<image class="i-integral" src="../../assets/i-integral.png"></image><text>{{needIntegral}}</text></view>
-            <view class="{{hasIntegral >= needIntegral ? 'btn' : 'ban-btn'}} exchange-btn" bindtap="showPopup">兑换</view>
+            <text class="gift-name" >{{item.name}}</text>
+            <view class="integral-item">需要积分：<image class="i-integral" src="../../assets/i-integral.png"></image><text>{{item.needIntegral}}</text></view>
+            <view class="{{hasIntegral >= item.needIntegral ? 'btn' : 'ban-btn'}} exchange-btn" bindtap="showPopup" data-need="{{item.needIntegral}}" data-id="{{item.id}}">兑换</view>
           </view>
         </view>
       </view>
     </view>
-
-    <view class="gift-info-item">
-      <view class="box-border gift-border">
-        <view class="box-container gift-container">
-          <!-- 礼物图片大小280*335 -->
-          <image class="gift-img" src="{{prizeImg}}"></image>
-          <view class= "gift-info">
-            <text class="gift-name">{{prizeName}}</text>
-            <view class="integral-item">需要积分：<image class="i-integral" src="../../assets/i-integral.png"></image><text>{{needIntegral}}</text></view>
-            <view class="{{hasIntegral >= needIntegral ? 'btn' : 'ban-btn'}} exchange-btn" bindtap="showPopup">兑换</view>
-          </view>
-        </view>
-      </view>
-    </view>
-     <view class="my-gift-btn btn" bindtap="showGift">我的奖品</view>
+    <view class="my-gift-btn btn" bindtap="showGift">我的奖品</view>
   </view>
 
  
   
 
-  <!-- 填写兑换奖品 
-  <view class="popup" wx:if="{{isShowPopup}}">-->
-  <view class="popup">
+  <!-- 填写兑换奖品--> 
+  <view class="popup" wx:if="{{isShowPopup}}">
+  <!-- <view class="popup"> -->
   
     <view class="box-border info-border">
       <view class="box-bg info-bg">

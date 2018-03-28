@@ -10,62 +10,33 @@ Page({
 		type_id: '',       // 题库类型
     title:'',       //题型标题   
     hasIntegral: '',       //个人积分
+    test_score:0,//上传获得的积分
+    test_click: 0,//上传获得的点赞数
 	},
-	onLoad: function(options) {
+	onLoad: function() {
 		var _this = this;
-		_this.setData({ 
-      type_id: options.type_id,
-      title: options.title,
-      hasIntegral: app.globalData.sore
-    })
-		// 接口拿数据
-		// 放入initData中
-		// 再执行_this.initExamData();
-		//_this.initExamData();
-
-
-    //请求后台获取试题套数
+    //请求后台获取上传获得的积分
     wx.request({
-      url: config.route + api.testNumber,
+      url: config.route + api.test_score,
       data: {
-        type_id: options.type_id,
+        user_id: app.globalData.user_id,
         token: config.token
       },
       success: function (res) {
         _this.setData({
-          initData: res.data,
+          test_score: res.data.score_num,
+          test_click: res.data.click_num,
         })
       }
     });
 	},
 
-	// 初始化试题
-	initExamData: function() {
-		var _this = this;
-		var examData = [];
-		for (var i = 0, len = _this.data.initData.length; i < len; i++) {
-			var attr = {
-				isExpand: false,  // 是否展开
-				examNum: '',      // 试题序号
-				difficulty: _this.data.initData[i].difficulty,  //难度
-				examIconClass: 'expand',  // icon样式
-				examType: '',      // 选中的试题类型
-				examId: 0,        // 试题id
-			}
-			
-			attr.examNum = '试题' + changeNum(i);
-			examData.push(attr);
-		}
-		_this.setData({ examData: examData });
-	},
-
-
 	// 去到答题页
-	toQuestionPage: function(e) {
-    var type_id = e.currentTarget.dataset.type; 
-    var number_id = e.currentTarget.dataset.number;
+  toReviewListPage: function(e) {
+    var _this = this;
+    var status = e.currentTarget.dataset.status; 
 		wx.navigateTo({
-      url: path.questionPage + '?type_id=' + type_id + '&number_id=' + number_id
+      url: path.reviewListPage + '?status=' + status + '&click_num=' + _this.data.test_click
 	  })
 	}
 })

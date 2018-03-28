@@ -4,40 +4,27 @@
 	<image class="bg" src="../../assets/bg0.png"></image>
 	<view class="container">
 		<view class="hd">
-			<view class="title">活动排行榜</view>
+			<view class="title">积分排行榜</view>
 			<image class="shadow" src="../../assets/shadow.png"></image>
 		</view>
 
 		<view class="banner-list">
 			<!-- 列表开始 -->
-			<view class="banner-item">
+			<view class="banner-item" wx:for="{{initData}}">
 				<view class="content">
 					<image class="rank-box" src="../../assets/rank-box.png" />
 					<!-- <image class="rank-icon" src="../../assets/i-no1.png" /> -->
-					<text class="rank-txt">4</text>
-					<image class="avatar" src="../../assets/b-wrong.png"  />
-					<text class="nike-name">王文杰</text>
+					<text class="rank-txt">{{item.rank}}</text>
+					<image class="avatar" src="{{item.open.open_face}}"  />
+					<text class="nike-name">{{item.open.open_name}}</text>
           <view class="integral">
           	<image src="../../assets/i-integral.png" />
-          	<text>3930</text>
+          	<text>{{item.user_sum}}</text>
           </view>
 				</view>
 			</view>
 			<!-- 列表结束 -->
 
-			<view class="banner-item">
-				<view class="content">
-					<image class="rank-box" src="../../assets/rank-box.png" />
-					<!-- <image class="rank-icon" src="../../assets/i-no1.png" /> -->
-					<text class="rank-txt">4</text>
-					<image class="avatar" src="../../assets/b-wrong.png"  />
-					<text class="nike-name">王文杰</text>
-          <view class="integral">
-          	<image src="../../assets/i-integral.png" />
-          	<text>3930</text>
-          </view>
-				</view>
-			</view>
 		</view>
 	</view>
 </view>

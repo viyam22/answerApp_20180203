@@ -8,7 +8,7 @@
 		<view class="like" bindtap="likeFun">
 			<!-- @islike: 是否点赞的参数 -->
 			<image src="../../assets/i-{{showData.islike ? 'liked' : 'like'}}.png" />
-			<text class="{{showData.islike ? 'txt-liked' : ''}}">2.3w</text>
+			<text class="{{showData.islike ? 'txt-liked' : ''}}">{{showData.click_num}}</text>
 			<view>喜欢题目请点赞</view>
 		</view>
 		<view class="title">{{showData.title}}</view>

@@ -15,37 +15,46 @@
   </view>
   
   <view class="signin">
-    <view class="title">签到成功！获得10积分</view>
-    <view class="sub-title">明天签到可领10积分</view>
-    <view class="tip">连续签到2天</view>
+    <view class="title">{{title2}}</view>
+    <view class="sub-title">{{title3}}</view>
+    <view class="{{islike ? 'yqd' : 'tip'}}" bindtap="likeFun">{{title1}}</view>
     <view class="lists">
+
       <view class="item">
         <text class="date-signin">第一天</text>
-        <image class="img" src="../../assets/i-signin-success.png" />
+        <image class="img" wx:if="{{ischeck>=1}}" src="../../assets/i-signin-success.png"  />
+        <image class="img" wx:else src="../../assets/i-sign-never.png"  />
+      </view>
+      
+      <view class="item">
+        <text class="date-signin">第二天</text>
+        <image class="img" wx:if="{{ischeck>=2}}" src="../../assets/i-signin-success.png"  />
+        <image class="img" wx:else src="../../assets/i-sign-never.png"  />
       </view>
       <view class="item">
-        <text class="date-signin">第一天</text>
-        <image class="img" src="../../assets/i-signin-success.png" />
+        <text class="date-signin">第三天</text>
+        <image class="img" wx:if="{{ischeck>=3}}" src="../../assets/i-signin-success.png"  />
+        <image class="img" wx:else src="../../assets/i-sign-never.png"  />
       </view>
       <view class="item">
-        <text class="date-signin">第一天</text>
-        <image class="img" src="../../assets/i-signin-success.png" />
+        <text class="date-signin">第四天</text>
+        <image class="img" wx:if="{{ischeck>=4}}" src="../../assets/i-signin-success.png"  />
+        <image class="img" wx:else src="../../assets/i-sign-never.png"  />
       </view>
       <view class="item">
-        <text class="date-signin">第一天</text>
-        <image class="img" src="../../assets/i-signin-success.png" />
+        <text class="date-signin">第五天</text>
+        <image class="img" wx:if="{{ischeck>=5}}" src="../../assets/i-signin-success.png"  />
+        <image class="img" wx:else src="../../assets/i-sign-never.png"  />
       </view>
       <view class="item">
-        <text class="date-signin">第一天</text>
-        <image class="img" src="../../assets/i-signin-success.png" />
+        <text class="date-signin">第六天</text>
+        <image class="img" wx:if="{{ischeck>=6}}" src="../../assets/i-signin-success.png"  />
+        <image class="img" wx:else src="../../assets/i-sign-never.png"  />
       </view>
       <view class="item">
-        <text class="date-signin">第一天</text>
-        <image class="img" src="../../assets/i-signin-success.png" />
-      </view>
-      <view class="item">
-        <text class="date-signin">第一天</text>
-        <image class="img" src="../../assets/i-signin-success.png" />
+        <text class="date-signin">第七天</text>
+        <image class="img" wx:if="{{ischeck>=7}}" src="../../assets/i-signin-success.png"  />
+        <image class="img" wx:else src="../../assets/i-sign-never.png"  />
       </view>
     </view>
   </view>

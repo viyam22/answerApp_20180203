@@ -11,40 +11,22 @@ Page({
    */
   data: {
     initData: {
-      type: [],   // 题目类型
+      type: ['单选题','多选题','判断题'],   // 题目类型
     },
 
   	// 填写信息
     typeIndex: null,  // 选择题目类型的下标
     inputContent: '',   // 上传题目内容
+    type_name:'',//题库类型
+    isShowPopup:false,
   	
   },
 
-  onLoad: function () {
-    wx.showLoading({
-      title: '加载中...',
-    });
-    //请求后台获取礼品
+  onLoad: function (options) {
     var _this = this;
-    wx.request({
-      url: config.route + api.getPrize,
-      data: {
-        token: config.token
-      },
-      success: function (res) {
-        console.log('gift',res)
-        wx.hideLoading();
-        _this.setData({
-          prizeImg: res.data.imgUrl,
-          prizeName: res.data.name,
-          needIntegral: res.data.needIntegral,
-          hasIntegral: app.globalData.sore,
-          initData:{
-            departmentArray: res.data.gdj
-          }
-        })
-      }
-    });
+    _this.setData({
+      type_name: options.title,
+    })
   },
 
  /**
@@ -93,40 +75,37 @@ Page({
       _this.setData({
         inputContent: e.detail.value,
       })
-      console.log(this.data.inputContent)
     };
   },
 
 
   sendInfo: function() {
     var _this = this;
+    // if (!_this.data.isCanSubmit) return;
 
-    if (!_this.data.isCanSubmit) return;
     var typeIndex=_this.data.typeIndex;  
-   
     var postData = {
       inputContent: _this.data.inputContent.replace(/\s/g,""),
       from2: _this.data.initData.type[typeIndex]
     }
-
     var title;
     if (!typeIndex) {
-      _this.showToast('请选择所属供电局');
+      _this.showToast('请选择题目类型');
       return;
     } else if (postData.inputContent.length < 0) {
       _this.showToast('请输入题目内容');
       return;
     }
-
     wx.showLoading({
       title: '提交中',
     })
     // 提交信息接口 提交个人信息
-    console.log('postData', postData);
     wx.request({
-      url: config.route + api.addUser,
+      url: config.route + api.user_test,
       data: {
-        user_info: postData,
+        type: _this.data.type_name,
+        style: postData.from2,
+        content: postData.inputContent,
         user_id: app.globalData.user_id,
         token: config.token,
         // 供电局data: _this.data.initData.departmentArray[typeIndex]
@@ -136,8 +115,9 @@ Page({
       },
       success: function (res) {
         if (res.data.code == 1) {
-          //提交成功
-          _this.showToast('登记成功');
+          _this.setData({
+            isShowPopup: true,
+          })
           
         } else {
           //提交失败
@@ -171,9 +151,9 @@ Page({
       icon: 'none',
       duration: 1500,
       success:function(){
-        wx.navigateBack({
-          delta: 4
-        })
+        // wx.navigateBack({
+        //   delta: 4
+        // })
       }
     })
   },
@@ -181,8 +161,7 @@ Page({
   // 关闭弹窗
   closePopup: function() {
     this.setData({ 
-      isShowNoneGiftPopup: false,
-      isShowGiftPopup: false
+      isShowPopup: false,
     })
   },  
 

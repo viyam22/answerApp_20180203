@@ -193,6 +193,18 @@
 .signin .item > .date-signin {
   color: #fff100;
 }
+.yqd{
+  width: 158rpx;
+  height: 48rpx;
+  font-size: 24rpx;
+  line-height: 48rpx;
+  border-radius: 24rpx;
+  background-color: #C7D9F0;
+  position: absolute;
+  top: 21rpx;
+  right: 26rpx;
+  text-align: center;
+}
 
 
 

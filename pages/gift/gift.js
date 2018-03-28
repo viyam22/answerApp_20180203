@@ -17,10 +17,8 @@ Page({
    */
   data: {
     initData: {
-
       departmentArray: [],   // 所属供电局的值
-      myGift: []
-
+      myGift: [],
     },
   	// 礼品
     prize:[],
@@ -59,6 +57,7 @@ Page({
     province: '',
     city: '',
     area: '',
+    prizeArray: [],
   },
   onLoad: function () {
     wx.showLoading({
@@ -74,11 +73,8 @@ Page({
       success: function (res) {
         wx.hideLoading();
         _this.setData({
-
-          prizeImg: res.data.imgUrl,
-          prizeName: res.data.name,
-          needIntegral: res.data.needIntegral,
           hasIntegral: app.globalData.sore,
+          prizeArray: res.data.prize,
           initData:{
             departmentArray: res.data.gdj
           }
@@ -126,17 +122,19 @@ Page({
 		_this.setData({ exchangeBtnClass: exchangeBtnClass });
 	},
 
-	showPopup: function() {
+	showPopup: function(e) {
 		var _this = this;
-
- 
-    if (_this.data.hasIntegral < _this.data.needIntegral) return;
+    var id = e.target.dataset.id;//奖品id
+    var needIntegral = e.target.dataset.need;//兑换积分
+    if (_this.data.hasIntegral < needIntegral) return;
+    
     //点击兑换 请求后台记录
     //查看是否填写信息
     wx.request({
       url: config.route + api.getUser,
       data: {
         user_id: app.globalData.user_id,
+        pid:id,
         token: config.token
       },
       success: function (res) {
