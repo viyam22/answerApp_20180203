@@ -11,7 +11,7 @@
 		<view class="banner-list">
       <!-- 我的排行 -->
       <view class="banner-item">
-				<view class="content" wx:if="{{we.lengt>=1}}">
+				<view class="content" wx:if="{{we}}">
 					<image class="rank-box" src="../../assets/rank-box.png" />
 					<image class="rank-icon" wx:if="{{we.rank <= 3}}" src="../../assets/i-no{{we.rank}}.png" />
 					<text class="rank-txt" wx:if="{{we.rank > 3}}">{{we.rank}}</text>
