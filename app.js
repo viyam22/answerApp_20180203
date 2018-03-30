@@ -59,6 +59,34 @@ App({
               }
             }
           })
+        }else{
+          wx.getUserInfo({
+            success: res => {
+              // 可以将 res 发送给后台解码出 unionId
+
+              _this.globalData.userInfo = res.userInfo;
+
+              //保存昵称头像
+              wx.request({
+                url: config.route + api.WXopens,
+                data: {
+                  open_name: _this.globalData.userInfo.nickName,
+                  open_face: _this.globalData.userInfo.avatarUrl,
+                  token: config.token,
+                  user_id: _this.globalData.user_id
+                },
+                success: function (res) {
+                  console.log('login:' + res.data.uid);
+                }
+              })
+
+              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+              // 所以此处加入 callback 以防止这种情况
+              if (this.userInfoReadyCallback) {
+                this.userInfoReadyCallback(res)
+              }
+            }
+          })
         }
       }
     })

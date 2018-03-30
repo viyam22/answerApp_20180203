@@ -6,6 +6,7 @@ const app = getApp()
 Page({
 	data: {
 		initData: [],  
+    we:[]
 	},
 	onLoad: function() {
     wx.showLoading({
@@ -13,16 +14,19 @@ Page({
     });
     //请求后台获取排行榜
     var _this = this;
+
     wx.request({
       url: config.route + api.score_rank,
       data: {
-        token: config.token
+        token: config.token,
+        user_id: app.globalData.user_id
       },
       success: function (res) {
-        console.log(res.data);
+        
         wx.hideLoading();
         _this.setData({
-          initData: res.data
+          initData: res.data.rank_list,
+          we: res.data.we
         })
       }
     });
