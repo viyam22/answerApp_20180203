@@ -91,10 +91,13 @@ Page({
     if (!typeIndex) {
       _this.showToast('请选择题目类型');
       return;
-    } else if (postData.inputContent.length < 0) {
+    } 
+
+    if (postData.inputContent.length <= 0) {
       _this.showToast('请输入题目内容');
       return;
     }
+    
     wx.showLoading({
       title: '提交中',
     })
