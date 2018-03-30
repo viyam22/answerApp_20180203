@@ -13,7 +13,7 @@
       <view class="banner-item">
 				<view class="content">
 					<image class="rank-box" src="../../assets/rank-box.png" />
-					<image class="rank-icon" wx:if="{{we.rank <= 3}}" src="../../assets/i-no{{item.rank}}.png" />
+					<image class="rank-icon" wx:if="{{we.rank <= 3}}" src="../../assets/i-no{{we.rank}}.png" />
 					<text class="rank-txt" wx:if="{{we.rank > 3}}">{{we.rank}}</text>
 					<image class="avatar" src="{{we.open.open_face}}"  />
 					<text class="nike-name">{{we.open.open_name}}</text>
