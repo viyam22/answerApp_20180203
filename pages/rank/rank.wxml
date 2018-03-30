@@ -11,7 +11,7 @@
 		<view class="banner-list">
       <!-- 我的排行 -->
       <view class="banner-item">
-				<view class="content">
+				<view class="content" wx:if="{{we.lengt>=1}}">
 					<image class="rank-box" src="../../assets/rank-box.png" />
 					<image class="rank-icon" wx:if="{{we.rank <= 3}}" src="../../assets/i-no{{item.rank}}.png" />
 					<text class="rank-txt" wx:if="{{we.rank > 3}}">{{we.rank}}</text>
@@ -22,6 +22,10 @@
           	<text>{{we.user_sum}}</text>
           </view>
 				</view>
+        <view class="content" wx:else>
+        	<image class="rank-box" src="../../assets/rank-box.png" />
+          <text class="nike-name">您当前暂无排名</text>
+        </view>
 			</view>
       <!-- 我的排行 -->
 			<!-- 列表开始 -->
