@@ -68,10 +68,17 @@ Page({
 
 		// 多项选择时，标记答案
 		if (data.type === 1) {  
-			data.option[index].isSelected = true;
-			data.option[index].itemClass = 'item-selected';
-			_this.setData({ showData: data  })
-			return;
+      if (!data.option[index].isSelected) {
+        data.option[index].isSelected = true;
+        data.option[index].itemClass = 'item-selected';
+        _this.setData({ showData: data  })
+        return;
+      } else {
+        data.option[index].isSelected = false;
+        data.option[index].itemClass = 'item-default';
+        _this.setData({ showData: data  })
+        return;
+      }
 		}
 
 		// 非多项选择答对时
