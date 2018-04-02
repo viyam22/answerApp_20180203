@@ -13,7 +13,7 @@
       </view>
     </view>
   </view>
-  
+
   <view class="signin">
     <view class="title">{{title2}}</view>
     <view class="sub-title">{{title3}}</view>
