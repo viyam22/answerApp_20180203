@@ -37,18 +37,19 @@ Page({
               var t1;
               var t2;
               var t3;
-              if (res.data.m_score != 0){
-                var ts = (res.data.m_score+1)*10;
-                t1 = '连续签到' + res.data.m_score + '天';
-                t2 = '签到成功！获得' + (res.data.m_score*10) + '积分';
+              _this.setData({
+                ischeck: res.data.m_score.is_check,
+                islike: res.data.m_score.status,
+              });
+              if (res.data.m_score.status != 0){
+                var ts = (res.data.m_score.is_check + 1) * 10;
+                t1 = '连续签到' + res.data.m_score.is_check + '天';
+                t2 = '签到成功！获得' + (res.data.m_score.is_check * 10) + '积分';
                 t3 = '明天签到可领' + ts + '积分';
-                _this.setData({
-                  ischeck: res.data.m_score,
-                  islike:true,
-                });
+              
               }else{
                 t1 = '签到';
-                t2 = '您还没有签到';
+                t2 = '您今天还没有签到';
                 t3 = '';
               }
               _this.setData({

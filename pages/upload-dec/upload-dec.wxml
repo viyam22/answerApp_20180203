@@ -14,7 +14,7 @@
           </picker>
           <text class="attr">题目内容</text>
           <view class="textarea-tip"><text>题目输入格式参考：\n题目（例：WPS是哪家公司开发的软件？）\n+选项（例：微软，苹果，金山）\n+答案（例：金山）</text></view>
-          <textarea class="textarea-box" placeholder="请输入你要上传的题目、选贤、和答案" placeholder-class="input-text" wx:if="{{!isShowPopup}}" bindinput="getInputVal" data-type="content"></textarea>
+          <textarea class="textarea-box" placeholder="请输入你要上传的题目、选项和答案" placeholder-class="input-text" wx:if="{{!isShowPopup}}" bindinput="getInputVal" data-type="content"></textarea>
           <view class="upload-btn btn" bindtap="sendInfo">提交</view>
         </view>
     </view>
