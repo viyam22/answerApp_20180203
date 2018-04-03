@@ -6,7 +6,7 @@ const app = getApp()
 Page({
 	data: {
 		initData: [],  
-    we:false
+    we:[],
 	},
 	onLoad: function() {
     wx.showLoading({
@@ -23,13 +23,14 @@ Page({
       },
       success: function (res) {
         wx.hideLoading();
-        var we=false;
-        if (res.we){
-          we = res.we
-        }
+        // var we = [];
+        // if (res.data.rank_list.we){
+        //   we = res.data.rank_list.we
+        // }
+        console.log(we);
         _this.setData({
           initData: res.data.rank_list,
-          we: we
+          we: res.data.rank_list.we
         })
 
 
