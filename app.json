@@ -1,11 +1,12 @@
 {
   "pages":[
+    "pages/get-like/get-like",
+    "pages/rank/rank",
     "pages/index/index",
     "pages/upload-dec/upload-dec",    
     "pages/upload-list/upload-list",
     "pages/upload/upload",
     "pages/review-list/review-list",
-    "pages/rank/rank",
     "pages/review/review",
     "pages/topic-list/topic-list",
     "pages/gift/gift",

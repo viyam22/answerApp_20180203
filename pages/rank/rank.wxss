@@ -6,7 +6,15 @@
 	background-color: #3f8cf4;
 	width: 100%;
 	height: 161rpx;
-	position: absolute;
+  position: fixed;
+  top: 0;
+}
+.bottom-bar {
+	background-color: #3f8cf4;
+	width: 100%;
+	height: 231rpx;
+  position: fixed;
+  bottom: 0;
 }
 .container {
 	/*padding: 35rpx 49rpx;*/
@@ -64,6 +72,9 @@
 	top: 120rpx;
 	left: 10rpx;
 }
+.bottom-bar .shadow {
+  top: 20rpx!important;
+}
 .banner-img {
 	width: 652rpx;
 	height: 198rpx;
@@ -105,7 +116,9 @@
 	transform: translateY(-40rpx);
   z-index: 15;
   margin-top: 25rpx;
-	position: relative;
+  position: relative;
+  height: 850rpx;
+  top: 149rpx;
 }
 .banner-item .icon {
 	background-size: contain;
@@ -176,30 +189,6 @@
   color: rgba(225, 255, 255, 0.7);
   margin-top: 14rpx;
 }
-.i-like {
-  width: 118rpx;
-  height: 51rpx;
-  line-height: 51rpx;
-  position: absolute;
-  border-radius: 59rpx 0 0 59rpx;
-  background-color: rgba(0, 0, 0, 0.8);
-  right: 5rpx;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 24rpx;
-  text-align: center;
-  padding-left: 50rpx;
-  box-sizing: border-box;
-}
-.i-like > image {
-  width: 29rpx;
-  height: 29rpx;
-  position: absolute;
-  top: 0;
-  left: 20rpx;
-  top: 50%;
-  transform: translateY(-50%);
-}
 .hd > .title {
   color: #fff;
   font-size: 42rpx;
@@ -252,7 +241,7 @@
 	line-height: 54rpx;
 	position: absolute;
 	top: 66rpx;
-	left: 458rpx;
+	left: 382rpx;
 	background-color: rgb(74, 102, 209);
 	color: #fff;
 	font-size: 36rpx;
@@ -266,5 +255,25 @@
 	margin-right: 13rpx;
 	float: left;
 }
-
-
+.i-like {
+  width: 28rpx;
+  height: 28rpx;
+}
+.like-warp {
+  width: 100rpx;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  font-size: 26rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.btn-shareTip {
+  width: 322rpx;
+  height: 88rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 89rpx;
+}

@@ -90,7 +90,7 @@
 }
 .banner-desc {
 	position: absolute;
-	top: 613rpx;
+	top: 215rpx;
 	right: 35rpx;
 	width: 330rpx;
 	height: 187rpx;
@@ -111,7 +111,7 @@
 }
 .banner-review {
   position: absolute;
-	top: 215rpx;
+	top: 613rpx;
 	right: 35rpx;
 	width: 330rpx;
 	height: 186rpx;
