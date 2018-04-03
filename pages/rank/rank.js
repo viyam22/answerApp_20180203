@@ -6,7 +6,7 @@ const app = getApp()
 Page({
 	data: {
 		initData: [],  
-    we:[],
+    we: [],
 	},
 	onLoad: function() {
     wx.showLoading({
@@ -27,7 +27,7 @@ Page({
         // if (res.data.rank_list.we){
         //   we = res.data.rank_list.we
         // }
-        console.log(we);
+        console.log(res.data.rank_list.we);
         _this.setData({
           initData: res.data.rank_list,
           we: res.data.rank_list.we
