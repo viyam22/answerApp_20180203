@@ -6,7 +6,12 @@ const app = getApp()
 Page({
 	data: {
 		initData: [],  
+<<<<<<< HEAD
     we: [],
+=======
+    we: false,
+    isLike: true
+>>>>>>> cf1085312990b5cb08233ca7621078deb3b02422
 	},
 	onLoad: function() {
     wx.showLoading({
@@ -32,8 +37,6 @@ Page({
           initData: res.data.rank_list,
           we: res.data.rank_list.we
         })
-
-
       }
     });
 	},

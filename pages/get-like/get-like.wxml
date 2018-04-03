@@ -1,0 +1,25 @@
+<view class="top-bar"></view>
+<view class="warp">
+	
+	<image class="i-headimg" src="../../assets/i-headimg.png" />
+	<image class="avatar" src="" /> 
+	<view class="nickname">微信名字</view>
+	<view class="rank">
+		<image class="i-rank-box" src="../../assets/i-rank-box.png" />
+		<view class="rank-txt">当前排行 第21名</view>
+	</view>
+	<view class="like-txt">
+		<image class="" src="../../assets/i-like.png" />
+		<text>被赞37次</text>
+	</view>
+	<!-- <view class="integral">
+		<image src="../../assets/i-integral.png" />
+		<text>1427</text>
+	</view> -->
+
+	<view class="integral">
+          	<image src="../../assets/i-integral.png" />
+          	<text>{{item.user_sum}}</text>
+          </view>
+	<image class="btn-like" src="../../assets/btn-like.png" />
+</view>

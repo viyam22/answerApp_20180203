@@ -1,14 +1,22 @@
 <!-- 题库主页 -->
 <view class="topic">
-	<view class="top-bar"></view>
-	<image class="bg" src="../../assets/bg0.png"></image>
-	<view class="container">
+	<view class="top-bar">
 		<view class="hd">
 			<view class="title">积分排行榜</view>
 			<image class="shadow" src="../../assets/shadow.png"></image>
 		</view>
+	</view>
+	<view class="bottom-bar">
+		<view class="hd">
+			<image class="shadow" src="../../assets/shadow.png"></image>		
+			<image class="btn-shareTip" src="../../assets/btn-shareTip.png" />
+		</view>
+	</view>
+	<image class="bg" src="../../assets/bg0.png"></image>
+	<view class="container">
+		
 
-		<view class="banner-list">
+		<scroll-view scroll-y class="banner-list">
       <!-- 我的排行 -->
       <view class="banner-item">
 				<view class="content" wx:if="{{we}}">
@@ -40,10 +48,15 @@
           	<image src="../../assets/i-integral.png" />
           	<text>{{item.user_sum}}</text>
           </view>
+					<view class="like-warp">
+						<!-- @isLike: 是否点赞 -->
+						<view style="color: {{isLike ? '#2e49ab' : '#fff'}}">21</view>
+						<image class="i-like" src="../../assets/{{isLike ? 'i-like-blue': 'i-like'}}.png" />
+					</view>
 				</view>
 			</view>
 			<!-- 列表结束 -->
 
-		</view>
+		</scroll-view>
 	</view>
 </view>
